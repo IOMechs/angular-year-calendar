@@ -5,13 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build angular-year-calendar",
     "test": "ng test",
     "lint": "ng lint",
+    "publish:lib": "npm run build:lib && cd ./dist/angular-year-calendar && npm publish --access public",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.11",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.11",
     "@angular/compiler": "~8.2.11",
     "@angular/core": "~8.2.11",
@@ -19,11 +22,14 @@
     "@angular/platform-browser": "~8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
+    "date-fns": "^2.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.12",
+    "@angular-devkit/build-ng-packagr": "~0.803.12",
     "@angular/cli": "~8.3.12",
     "@angular/compiler-cli": "~8.2.11",
     "@angular/language-service": "~8.2.11",
@@ -38,8 +44,10 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.4.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   }

@@ -2,5 +2,49 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "angular-year-calendar": {
+      "projectType": "library",
+      "root": "projects/angular-year-calendar",
+      "sourceRoot": "projects/angular-year-calendar/src",
+      "prefix": "yc",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        },
+        "@ngrx/schematics:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-year-calendar/tsconfig.lib.json",
+            "project": "projects/angular-year-calendar/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-year-calendar/src/test.ts",
+            "tsConfig": "projects/angular-year-calendar/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-year-calendar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-year-calendar/tsconfig.lib.json",
+              "projects/angular-year-calendar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "angular-year-calendar"
 }

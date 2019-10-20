@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angular-year-calendar": [
+        "dist/angular-year-calendar"
+      ],
+      "angular-year-calendar/*": [
+        "dist/angular-year-calendar/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,0 +1,114 @@
+:host {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: 2px solid #E8ECEF;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 20px 32px;
+}
+.year-calendar {
+  width: 100%;
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 14px 32px;
+    border-bottom: 2px solid #E8ECEF;
+    &__year-name {
+      padding-left: 20px;
+    }
+    &__end-slot {
+      display: flex;
+      flex: 1;
+      align-self: center;
+      justify-content: flex-end;
+    }
+    &__options {
+      &__option {
+        cursor: pointer;
+        &:hover {
+          color: #acacac;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  &__body {
+    padding: 20px 32px;
+    border-radius: 6px;
+    padding: 32px 0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &__month {
+      width: 33.33%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 44px;
+      &__inner {
+        padding: 15px;
+        &__title {
+          text-align: center;
+        }
+        &__week {
+          display: flex;
+          &__number {
+            font-weight: bold;
+          }
+          &__day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            padding: 2px;
+            width: 32px;
+            height: 32px;
+            margin: 10px;
+            text-align: center;
+            transition: 0.2s all ease;
+            &--today {
+              border: 1px solid black;
+            }
+            &--has-value {
+              cursor: pointer;
+              &:hover {
+                background-color: #444 !important; // sadly using !important to overwrite javascript applied styles :(
+                color: white;
+              }
+            }
+            &--label {
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+    &__loader {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+
+@media all and (max-width: 1314px) {
+  .year-calendar {
+    &__body {
+      &__month {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 960px) {
+  .year-calendar {
+    &__body {
+      &__month {
+        width: 100%;
+      }
+    }
+  }
+}
