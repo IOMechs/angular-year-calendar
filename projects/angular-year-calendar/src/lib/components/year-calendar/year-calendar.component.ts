@@ -62,8 +62,8 @@ export class YearCalendarComponent implements OnInit, OnChanges {
    * @param date - date of the year to render
    */
   render(year: number = this.year) {
-    this.daysOfWeek = [...this.getDaysOfWeek()];
     this.year = year;
+    this.daysOfWeek = [...this.getDaysOfWeek()];
     this.yearData = new Array(12).fill(0).map((monthEl, monthIndex) => {
       return {
         date: new Date(this.year, monthIndex + 1, 0),

@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { subDays } from 'date-fns';
-import { addYears, differenceInCalendarDays } from 'date-fns';
+import { differenceInCalendarDays, subDays } from 'date-fns';
 
 @Pipe({
   name: 'weekNumber'
@@ -27,39 +26,40 @@ export class WeekNumberPipe implements PipeTransform {
     } = this.getFirstWeekFirstDate(year, firstWeekMonth, weekStartsOn);
     firstWeekFirstDate.setHours(12, 0, 0, 0);
 
+    let firstWeekStarttDate = subDays(firstWeekFirstDate, dayOfMonthFirstDateInView);
+    let dateDay = this.getDayInView(dateClone, weekStartsOn);
+    const weekStartDate = subDays(dateClone, dateDay);
+
+    let isDateOfPrevYear = false;
+    let weeksInYear;
+
     // mapping the days to our current view (based on weekStartsOn)
-    if (dateClone.getTime() < firstWeekFirstDate.getTime()) {
+    if (weekStartDate.getTime() < firstWeekFirstDate.getTime()) {
+      isDateOfPrevYear = true;
       const reassesedDates = this.getFirstWeekFirstDate(year - 1, firstWeekMonth, weekStartsOn);
       firstWeekFirstDate = reassesedDates.firstWeekFirstDate;
       dayOfMonthFirstDateInView = reassesedDates.dayOfMonthFirstDateInView;
       firstWeekFirstDate.setHours(12, 0, 0, 0);
+      firstWeekStarttDate = subDays(firstWeekFirstDate, dayOfMonthFirstDateInView);
+      firstWeekStarttDate.setHours(12, 0, 0, 0);
     }
 
     // find out the distance from the first week's first day
-    result = 1 + Math.round(((dateClone.getTime() - firstWeekFirstDate.getTime()) / 86400000) / 7);
-    // tslint:disable-next-line:max-line-length
-    let weeksInYear = this.getTotalWeeks(subDays(firstWeekFirstDate, dayOfMonthFirstDateInView), subDays(addYears(firstWeekFirstDate, 1), 1));
-    if (weeksInYear > result) {
-      weeksInYear = result;
-    }
-    if (result <= 0) { // if the week number isn't a positive value
-      result = weeksInYear + result;
+    result = 1 + Math.round(((weekStartDate.getTime() - firstWeekFirstDate.getTime()) / 86400000) / 7);
+    if (isDateOfPrevYear) {
+      // tslint:disable-next-line:max-line-length
+      weeksInYear = this.getTotalWeeks(firstWeekStarttDate, new Date(firstWeekFirstDate.getFullYear() + 1, 0, 0));
+    } else {
+      weeksInYear = this.getTotalWeeks(firstWeekFirstDate, new Date(firstWeekFirstDate.getFullYear() + 1, 0, 0));
     }
 
-    // if the result is more than there are weeks in the year, it means it's the next year's first week
-    if (result > weeksInYear) {
-      result = weeksInYear;
-    }
-
-    if (result === weeksInYear || dateClone.getFullYear() === year - 1) {
-      const nextYearFirstDate = new Date(dateClone.getFullYear() + 1, firstWeekMonth, 1);
-      const dateDay = Math.abs(this.getDayInView(nextYearFirstDate, weekStartsOn));
-      const datesDiff = differenceInCalendarDays(nextYearFirstDate, dateClone);
+    if (result === weeksInYear || weekStartDate.getFullYear() === year - 1) {
+      const nextYearFirstDate = new Date(weekStartDate.getFullYear() + 1, firstWeekMonth, 1);
+      dateDay = Math.abs(this.getDayInView(nextYearFirstDate, weekStartsOn));
+      const datesDiff = differenceInCalendarDays(nextYearFirstDate, weekStartDate);
       if (datesDiff <= 6) {
-        if (dateDay <= 3 && ((dateClone.getMonth()) % 11) === firstWeekMonth) {
+        if (dateDay <= 3 && ((weekStartDate.getMonth()) % 11) === firstWeekMonth) {
           result = 1;
-        } else {
-          result = weeksInYear;
         }
       }
     }

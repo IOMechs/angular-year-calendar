@@ -19,7 +19,7 @@ export class ExampleSectionComponent implements OnInit {
   }
 
   yearChanged($event) {
-
+    this.calendarDate = new Date($event, this.calendarDate.getMonth(), this.calendarDate.getDate());
   }
 
   dayClicked($event) {
