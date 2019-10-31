@@ -8,5 +8,8 @@ export const DEFAULT_CONFIG: YCConfig = {
   },
   weekStartsOn: 0,
   showWeekNumbers: false,
-  firstWeekMonth: 0
+  firstWeekMonth:  {
+    month: 0,
+    week: 1
+  }
 };

@@ -63,7 +63,7 @@ export class YearCalendarService {
    * @returns an array of week numbers
    */
   getWeekNumbers(month: number, year: number, yearViewConfig: YCConfig) {
-    if (!yearViewConfig || !yearViewConfig.showWeekNumbers || !(yearViewConfig.firstWeekMonth >= 0)) {
+    if (!yearViewConfig || !yearViewConfig.showWeekNumbers || !(yearViewConfig.firstWeekMonth.month >= 0)) {
       return [];
     } else {
       const weekNumbers = [];

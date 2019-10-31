@@ -17,7 +17,10 @@ export const BaseYCOptions: YCConfig = {
   todayBtn: {
     hide: false
   },
-  firstWeekMonth: 0, // January
+  firstWeekMonth: {
+    month: 0, // January
+    week: 1
+  },
   showWeekNumbers: false,
   weekNumbersColor: '#778CA2',
   dayClass: 'icp-year-calendar-day',

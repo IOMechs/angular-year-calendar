@@ -23,7 +23,10 @@ export interface YCConfig {
   todayBtn?: YCHeaderButton;
   hideHeader?: boolean;
   showWeekNumbers?: boolean;
-  firstWeekMonth?: number;
+  firstWeekMonth?: {
+    week: number;
+    month: number;
+  };
   weekStartsOn?: number;
   weekNumbersColor?: string;
   dayClass?: string;
