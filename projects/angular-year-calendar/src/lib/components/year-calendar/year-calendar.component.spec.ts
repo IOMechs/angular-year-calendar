@@ -4,10 +4,15 @@ import { YearCalendarComponent } from './year-calendar.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HeatmapColorDirective } from '../../directives/heatmap-color.directive';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { DEFAULT_CONFIG } from '../../constants/default-config';
 
 describe('YearCalendarComponent', () => {
   let component: YearCalendarComponent;
   let fixture: ComponentFixture<YearCalendarComponent>;
+  const twentyNineteen = 2019;
+  const twentyTwentyOne = 2021;
+  const twentyTwentyTwo = 2022;
+  const twentyTwentySeven = 2027;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,10 +26,71 @@ describe('YearCalendarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(YearCalendarComponent);
     component = fixture.componentInstance;
+    component.selectedDate = new Date(twentyNineteen, 0, 1);
+    component.ycConfig = {...DEFAULT_CONFIG};
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should start the day from Sunday with default (0) weekStartsOn', () => {
+    component.render(twentyNineteen);
+    expect(component.daysOfWeek).toEqual([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);
   });
+
+  it('should start the days from Wednesday with weekStartsOn set to 3', () => {
+    component.ycConfig.weekStartsOn = 3;
+    component.render(twentyNineteen);
+    expect(component.daysOfWeek).toEqual([ 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu' ]);
+  });
+
+  describe('weekStartsOn set to 1. I.e. Monday', () => {
+    beforeEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 1}};
+    });
+
+    it('should have the correct first week numbers for 2019', () => {
+      component.render(twentyNineteen);
+      expect(component.yearData[0].weekNumbers).toEqual([ 1, 2, 3, 4, 5 ]);
+    });
+
+    it('should have the correct first week numbers for 2021', () => {
+      component.render(twentyTwentyOne);
+      expect(component.yearData[0].weekNumbers).toEqual([ 53, 1, 2, 3, 4]);
+    });
+
+    it('should have the correct first week numbers for 2022', () => {
+      component.render(twentyTwentyTwo);
+      expect(component.yearData[0].weekNumbers).toEqual([ 52, 1, 2, 3, 4, 5]);
+    });
+
+    it('should have the correct first week numbers for 2027', () => {
+      component.render(twentyTwentySeven);
+      expect(component.yearData[0].weekNumbers).toEqual([ 53, 1, 2, 3, 4]);
+    });
+  });
+
+  describe('weekStartsOn set to 3. I.e. Wednesday', () => {
+    beforeEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 3}};
+    });
+    it('should have the correct first week numbers for 2019', () => {
+      component.render(twentyNineteen);
+      expect(component.yearData[0].weekNumbers).toEqual([ 52, 1, 2, 3, 4, 5 ]);
+    });
+
+    it('should have the correct first week numbers for 2021', () => {
+      component.render(twentyTwentyOne);
+      expect(component.yearData[0].weekNumbers).toEqual([ 1, 2, 3, 4, 5]);
+    });
+
+    it('should have the correct first week numbers for 2022', () => {
+      component.render(twentyTwentyTwo);
+      expect(component.yearData[0].weekNumbers).toEqual([ 1, 2, 3, 4, 5]);
+    });
+
+    it('should have the correct first week numbers for 2027', () => {
+      component.render(twentyTwentySeven);
+      expect(component.yearData[0].weekNumbers).toEqual([ 1, 2, 3, 4, 5]);
+    });
+  });
+
 });

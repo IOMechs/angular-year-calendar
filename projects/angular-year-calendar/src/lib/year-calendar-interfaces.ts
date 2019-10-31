@@ -11,17 +11,6 @@ export interface YCHeaderButton {
 }
 
 export interface YCConfig {
-  nextBtn?: YCHeaderButton;
-  prevBtn?: YCHeaderButton;
-  todayBtn?: YCHeaderButton;
-  showWeekNumbers?: boolean;
-  firstWeekMonth?: number;
-  weekStartsOn?: number;
-  weekNumbersColor?: string;
-  dayClass?: string;
-}
-
-export interface YCOptions {
   // the theme colors are basically color ranges according to hsl color constants. The `H` value to be exact.
   // See information here https://www.w3schools.com/colors/colors_hsl.asp
   themeColors?: {
@@ -29,8 +18,25 @@ export interface YCOptions {
     secondary: number
   };  // the theme color
   data: Array<YCDataItem>;
-  viewsConfig?: {
-    year?: YCConfig;
-  };
+  nextBtn?: YCHeaderButton;
+  prevBtn?: YCHeaderButton;
+  todayBtn?: YCHeaderButton;
+  hideHeader?: boolean;
+  showWeekNumbers?: boolean;
+  firstWeekMonth?: number;
+  weekStartsOn?: number;
+  weekNumbersColor?: string;
+  dayClass?: string;
   maxValue?: number;
+}
+
+export interface YCDayItem {
+  date: Date;
+  weeks: Array<Array<{  // setting the day of the week in the structure
+    day?: number,
+    isToday: boolean,
+    value: number,
+    date: Date
+  }>>;
+  weekNumbers: Array<number>;
 }

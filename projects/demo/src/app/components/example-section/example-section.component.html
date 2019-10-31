@@ -1,0 +1,13 @@
+<div class="example-section">
+  <h1 class="example-section__title">{{title}}</h1>
+  <div class="example-section__description">{{description}}</div>
+  <div class="example-section__content">
+    <yc-year-calendar class="example-section__content__year-calendar" [loadingData]="loadingData"
+      (viewYearChanged)="yearChanged($event)" (eventDayClicked)="dayClicked($event);"
+      [ycConfig]="ycConfig" [selectedDate]="calendarDate">
+      <div class="hm-loader">
+        Loading...
+      </div>
+    </yc-year-calendar>
+  </div>
+</div>

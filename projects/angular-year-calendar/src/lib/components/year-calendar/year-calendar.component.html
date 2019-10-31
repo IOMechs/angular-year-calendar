@@ -1,26 +1,26 @@
 <div class="year-calendar">
-  <div class="year-calendar__header">
+  <div class="year-calendar__header" *ngIf="!ycConfig?.hideHeader">
     <div class="year-calendar__header__options">
       <button
         [disabled]="loadingData"
-        *ngIf="!calendarOptions.viewsConfig?.year?.prevBtn?.hide"
-        class="year-calendar__header__options__option {{calendarOptions.viewsConfig?.year?.prevBtn?.class}}"
+        *ngIf="!ycConfig?.prevBtn?.hide"
+        class="year-calendar__header__options__option {{ycConfig?.prevBtn?.class}}"
         (click)="prevYearClick()">
-        {{calendarOptions.viewsConfig?.year?.prevBtn?.text || 'Previous'}}
+        {{ycConfig?.prevBtn?.text || 'Previous'}}
       </button>
       <button
         [disabled]="loadingData"
-        *ngIf="!calendarOptions.viewsConfig?.year?.todayBtn?.hide"
-        class="year-calendar__header__options__option {{calendarOptions.viewsConfig?.year?.todayBtn?.class}}"
+        *ngIf="!ycConfig?.todayBtn?.hide"
+        class="year-calendar__header__options__option {{ycConfig?.todayBtn?.class}}"
         (click)="todayClick()">
-        {{calendarOptions.viewsConfig?.year?.todayBtn?.text || 'Today'}}
+        {{ycConfig?.todayBtn?.text || 'Today'}}
       </button>
       <button
       [disabled]="loadingData"
-        *ngIf="!calendarOptions.viewsConfig?.year?.nextBtn?.hide"
-        class="year-calendar__header__options__option {{calendarOptions.viewsConfig?.year?.nextBtn?.class}}"
+        *ngIf="!ycConfig?.nextBtn?.hide"
+        class="year-calendar__header__options__option {{ycConfig?.nextBtn?.class}}"
         (click)="nextYearClick()">
-        {{calendarOptions.viewsConfig?.year?.nextBtn?.text || 'Next'}}
+        {{ycConfig?.nextBtn?.text || 'Next'}}
       </button>
     </div>
     <div class="year-calendar__header__year-name">
@@ -41,28 +41,28 @@
             {{month.date | date:'MMMM'}}
           </div>
           <div class="year-calendar__body__month__inner__week">
-            <div class="year-calendar__body__month__inner__week__day {{yearViewConfig?.dayClass}} year-calendar__body__month__inner__week__number year-calendar__body__month__inner__week__day--label" *ngIf="yearViewConfig?.showWeekNumbers" [style.color]="yearViewConfig.weekNumbersColor">
+            <div class="year-calendar__body__month__inner__week__day {{ycConfig?.dayClass}} year-calendar__body__month__inner__week__number year-calendar__body__month__inner__week__day--label" *ngIf="ycConfig?.showWeekNumbers" [style.color]="ycConfig.weekNumbersColor">
               Week
             </div>
-            <div class="year-calendar__body__month__inner__week__day  {{yearViewConfig?.dayClass}} year-calendar__body__month__inner__week__day--label" *ngFor="let dayLabel of daysOfWeek">
+            <div class="year-calendar__body__month__inner__week__day  {{ycConfig?.dayClass}} year-calendar__body__month__inner__week__day--label" *ngFor="let dayLabel of daysOfWeek">
               {{dayLabel}}
             </div>
           </div>
           <div
             *ngFor="let week of month.weeks; let weekIndex = index;"
             class="year-calendar__body__month__inner__week">
-            <div class="year-calendar__body__month__inner__week__day  {{yearViewConfig?.dayClass}} year-calendar__body__month__inner__week__number" *ngIf="yearViewConfig?.showWeekNumbers" [style.color]="yearViewConfig?.weekNumbersColor || 'black'">
+            <div class="year-calendar__body__month__inner__week__day  {{ycConfig?.dayClass}} year-calendar__body__month__inner__week__number" *ngIf="ycConfig?.showWeekNumbers" [style.color]="ycConfig?.weekNumbersColor || 'black'">
               {{month.weekNumbers[weekIndex]}}
             </div>
             <div
               *ngFor="let day of week;"
               ycHeatmapColor
               [value]="day?.value"
-              [maxValue]="calendarOptions.maxValue"
-              [primaryColor]="calendarOptions.themeColors.primary"
-              [secondaryColor]="calendarOptions.themeColors.secondary"
+              [maxValue]="ycConfig.maxValue"
+              [primaryColor]="ycConfig.themeColors.primary"
+              [secondaryColor]="ycConfig.themeColors.secondary"
               [ngClass]="{'year-calendar__body__month__inner__week__day--today': (!!day && !!day.isToday), 'year-calendar__body__month__inner__week__day--has-value':  (!!day?.value)}"
-              class="year-calendar__body__month__inner__week__day {{yearViewConfig?.dayClass}}"
+              class="year-calendar__body__month__inner__week__day {{ycConfig?.dayClass}}"
               cdkOverlayOrigin
               #heatMapEventDayTrigger="cdkOverlayOrigin"
               (click)="eventDayCick(day, heatMapEventDayTrigger)">

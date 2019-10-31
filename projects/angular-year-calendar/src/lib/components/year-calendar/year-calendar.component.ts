@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { YearCalendarService } from '../../year-calendar.service';
-import { YCOptions, YCConfig } from '../../year-calendar-interfaces';
+import { YCConfig } from '../../year-calendar-interfaces';
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
+import { DEFAULT_CONFIG } from '../../constants/default-config';
 
 export const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -15,40 +16,28 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   @Input() themeColor = 'ff0000';
   @Input() selectedDate: Date = new Date();
   @Input() loadingData: boolean;
-  @Input() calendarOptions: YCOptions = {
-    data: [],
-    themeColors: {
-      primary: 0,
-      secondary: 60
-    },
-    viewsConfig: {
-      year: {
-        weekStartsOn: 0,
-        showWeekNumbers: false
-      }
-    }
-  };
+  @Input() ycConfig: YCConfig = DEFAULT_CONFIG;
   @Input() daysOfWeek: any = [...DAYS_OF_WEEK];
   @Output() eventDayClicked = new EventEmitter<any>();
   @Output() viewYearChanged = new EventEmitter<any>();
   year = new Date().getFullYear();
   yearData = [];
-  yearViewConfig: YCConfig = null;
   constructor(
     private ycService: YearCalendarService
   ) { }
 
   ngOnInit() {
-    if (this.calendarOptions.viewsConfig && this.calendarOptions.viewsConfig.year) {
-      this.yearViewConfig = this.calendarOptions.viewsConfig.year;
-    }
     this.render(this.selectedDate.getFullYear());
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.calendarOptions) {
-      const previousValue: YCOptions = changes.calendarOptions.previousValue;
-      const currentValue: YCOptions = changes.calendarOptions.currentValue;
+    if (changes.ycConfig) {
+      const previousValue: YCConfig = changes.ycConfig.previousValue;
+      const currentValue: YCConfig = changes.ycConfig.currentValue;
+      this.ycConfig = {
+        ...DEFAULT_CONFIG,
+        ...this.ycConfig
+      };
       if (
         previousValue && currentValue &&
         ((previousValue.data.length !== currentValue.data.length) ||
@@ -79,14 +68,14 @@ export class YearCalendarComponent implements OnInit, OnChanges {
       return {
         date: new Date(this.year, monthIndex + 1, 0),
         weeks: this.createDaysOfMonth(monthIndex, this.year),
-        weekNumbers: this.ycService.getWeekNumbers(monthIndex, this.year, this.yearViewConfig)
+        weekNumbers: this.ycService.getWeekNumbers(monthIndex, this.year, this.ycConfig)
       };
     });
   }
 
   getDaysOfWeek() {
     const days = [];
-    for (let i = this.yearViewConfig.weekStartsOn, len = this.yearViewConfig.weekStartsOn + this.daysOfWeek.length; i < len; ++i) {
+    for (let i = this.ycConfig.weekStartsOn, len = this.ycConfig.weekStartsOn + this.daysOfWeek.length; i < len; ++i) {
       days.push(DAYS_OF_WEEK[i % (this.daysOfWeek.length)]);
     }
     return days;
@@ -100,7 +89,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
    */
   createDaysOfMonth(monthIndex, year) {
     // getting the weeks of the month to calculate rows on month view
-    const monthWeeksData = this.ycService.getMonthWeeks(monthIndex, year, this.yearViewConfig.weekStartsOn);
+    const monthWeeksData = this.ycService.getMonthWeeks(monthIndex, year, this.ycConfig.weekStartsOn);
     const {
       monthWeeksCount,
       lastDayOfMonth,
@@ -142,8 +131,8 @@ export class YearCalendarComponent implements OnInit, OnChanges {
         currentDate++; // incrementing the date counter after each date's addition to the date structure
       }
     }
-    if (maxValueInYear > this.calendarOptions.maxValue) {
-      this.calendarOptions.maxValue = maxValueInYear;
+    if (maxValueInYear > this.ycConfig.maxValue) {
+      this.ycConfig.maxValue = maxValueInYear;
     }
     return daysOfWeeks.filter(weekData => {
       return weekData.length !== 0;
@@ -151,7 +140,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   }
 
   assignDataCountToDate(currDayString) {
-    let dateData = this.calendarOptions.data.find((dataItem) => {
+    let dateData = this.ycConfig.data.find((dataItem) => {
       const itemDate = dataItem.date;
       if (!itemDate) {
         return false;
@@ -159,13 +148,13 @@ export class YearCalendarComponent implements OnInit, OnChanges {
       return new Date(itemDate.getFullYear(), itemDate.getMonth(), itemDate.getDate()).toDateString() === currDayString;
     });
     if (!dateData) {
-      const dataIndex = this.calendarOptions.data.findIndex((dataItem) => {
+      const dataIndex = this.ycConfig.data.findIndex((dataItem) => {
         return dataItem.date === null;
       });
 
       if (dataIndex >= 0) {
-        dateData = {...this.calendarOptions.data[dataIndex]};
-        this.calendarOptions.data[dataIndex].date = new Date(currDayString);
+        dateData = {...this.ycConfig.data[dataIndex]};
+        this.ycConfig.data[dataIndex].date = new Date(currDayString);
       }
     }
     return {
