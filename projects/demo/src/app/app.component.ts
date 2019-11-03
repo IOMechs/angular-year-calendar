@@ -16,7 +16,7 @@ export class AppComponent {
       weekStartsOn: 0,
       firstWeekMonth: {
         month: 1,
-        week: 4
+        week: 0
       }
     }
   };

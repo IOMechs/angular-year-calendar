@@ -19,7 +19,7 @@ export const BaseYCOptions: YCConfig = {
   },
   firstWeekMonth: {
     month: 0, // January
-    week: 1
+    week: 0 // use `null` for standard weeks and calculations
   },
   showWeekNumbers: false,
   weekNumbersColor: '#778CA2',
