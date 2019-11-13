@@ -27,23 +27,35 @@ describe('YearCalendarComponent', () => {
     fixture = TestBed.createComponent(YearCalendarComponent);
     component = fixture.componentInstance;
     component.selectedDate = new Date(twentyNineteen, 0, 1);
-    component.ycConfig = {...DEFAULT_CONFIG};
     fixture.detectChanges();
   });
 
-  it('should start the day from Sunday with default (0) weekStartsOn', () => {
-    component.render(twentyNineteen);
-    expect(component.daysOfWeek).toEqual([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);
-  });
+  describe('default config', () => {
+    beforeEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG};
+    })
+    afterEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG};
+    });
 
-  it('should start the days from Wednesday with weekStartsOn set to 3', () => {
-    component.ycConfig.weekStartsOn = 3;
-    component.render(twentyNineteen);
-    expect(component.daysOfWeek).toEqual([ 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu' ]);
+    it('should start the day from Sunday with default (0) weekStartsOn', () => {
+      component.render(twentyNineteen);
+      expect(component.daysOfWeek).toEqual([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);
+    });
+
+    it('should start the days from Wednesday with weekStartsOn set to 3', () => {
+      component.ycConfig.weekStartsOn = 3;
+      component.render(twentyNineteen);
+      expect(component.daysOfWeek).toEqual([ 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu' ]);
+    });
   });
 
   describe('weekStartsOn set to 1. I.e. Monday', () => {
     beforeEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 1}};
+    });
+
+    afterEach(() => {
       component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 1}};
     });
 
@@ -72,6 +84,11 @@ describe('YearCalendarComponent', () => {
     beforeEach(() => {
       component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 3}};
     });
+
+    afterEach(() => {
+      component.ycConfig = {...DEFAULT_CONFIG, ...{showWeekNumbers: true, weekStartsOn: 3}};
+    });
+
     it('should have the correct first week numbers for 2019', () => {
       component.render(twentyNineteen);
       expect(component.yearData[0].weekNumbers).toEqual([ 52, 1, 2, 3, 4, 5 ]);
@@ -90,6 +107,32 @@ describe('YearCalendarComponent', () => {
     it('should have the correct first week numbers for 2027', () => {
       component.render(twentyTwentySeven);
       expect(component.yearData[0].weekNumbers).toEqual([ 1, 2, 3, 4, 5]);
+    });
+  });
+
+  describe('Week 5 is the first week of the year', () => {
+    beforeEach(() => {
+      component.ycConfig = {
+        ...DEFAULT_CONFIG,
+        ...{
+          showWeekNumbers: true,
+          weekStartsOn: 0,
+          firstWeekMonth: {
+            month: 0,
+            week: 4
+          }
+        }
+      };
+    });
+
+    it('should have the correct first week numbers for 2019', () => {
+      component.render(twentyNineteen);
+      expect(component.yearData[0].weekNumbers).toEqual([ 49, 50, 51, 52, 1 ]);
+    });
+
+    it('should have the correct first week numbers for 2021', () => {
+      component.render(twentyTwentyOne);
+      expect(component.yearData[0].weekNumbers).toEqual([ 49, 50, 51, 52, 53, 1 ]);
     });
   });
 

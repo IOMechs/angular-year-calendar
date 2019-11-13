@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { differenceInCalendarDays, subDays, addWeeks } from 'date-fns';
+import { differenceInCalendarDays, subDays, addWeeks, addDays, addYears } from 'date-fns';
 import { DEFAULT_WEEK } from '../../constants/default-config';
 
 @Pipe({
@@ -25,6 +25,7 @@ export class WeekNumberPipe implements PipeTransform {
       firstWeekFirstDate,
       dayOfMonthFirstDateInView
     } = this.getFirstWeekFirstDate(year, firstWeekMonth, weekStartsOn);
+    firstWeekFirstDate = addWeeks(firstWeekFirstDate, firstWeekMonth.week);
     firstWeekFirstDate.setHours(12, 0, 0, 0);
 
     let firstWeekStarttDate = subDays(firstWeekFirstDate, dayOfMonthFirstDateInView);
@@ -40,44 +41,38 @@ export class WeekNumberPipe implements PipeTransform {
      * week calculation as well. I.e. how many days the first week has. If it has lower days, the previous
      * year's week number is used. If it has more days, then it is called week 1
      */
-    if (firstWeekMonth.week !== null) {
-      firstWeekStarttDate = addWeeks(firstWeekStarttDate, firstWeekMonth.week);
-      firstWeekFirstDate = firstWeekStarttDate;
-    }
+    // firstWeekStarttDate = addWeeks(firstWeekStarttDate, firstWeekMonth.week);
 
     // mapping the days to our current view (based on weekStartsOn)
     if (weekStartDate.getTime() < firstWeekFirstDate.getTime()) {
       isDateOfPrevYear = true;
       const reassesedDates = this.getFirstWeekFirstDate(year - 1, firstWeekMonth, weekStartsOn);
       firstWeekFirstDate = reassesedDates.firstWeekFirstDate;
+      firstWeekFirstDate = addWeeks(firstWeekFirstDate, firstWeekMonth.week);
       dayOfMonthFirstDateInView = reassesedDates.dayOfMonthFirstDateInView;
       firstWeekFirstDate.setHours(12, 0, 0, 0);
       firstWeekStarttDate = subDays(firstWeekFirstDate, dayOfMonthFirstDateInView);
       firstWeekStarttDate.setHours(12, 0, 0, 0);
-
-      if (firstWeekMonth.week !== DEFAULT_WEEK) {  // if we have a custom week of the month as the first week of the year
-        firstWeekStarttDate = addWeeks(firstWeekStarttDate, firstWeekMonth.week - 1);
-        firstWeekFirstDate = firstWeekStarttDate;
-      }
     }
 
     // find out the distance from the first week's first day
     result = 1 + Math.round(((weekStartDate.getTime() - firstWeekFirstDate.getTime()) / 86400000) / 7);
     if (isDateOfPrevYear) {
       // tslint:disable-next-line:max-line-length
-      weeksInYear = this.getTotalWeeks(firstWeekStarttDate, new Date(firstWeekFirstDate.getFullYear() + 1, 0, 0));
+      weeksInYear = this.getTotalWeeks(firstWeekStarttDate, addYears(firstWeekStarttDate, 1));
     } else {
-      weeksInYear = this.getTotalWeeks(firstWeekFirstDate, new Date(firstWeekFirstDate.getFullYear() + 1, 0, 0));
+      weeksInYear = this.getTotalWeeks(firstWeekFirstDate, addYears(firstWeekStarttDate, 1));
     }
 
     /**
      * if we have the first week of the month as the first week of the year (standard view)
      */
-    if (firstWeekMonth.week !== DEFAULT_WEEK) {
-      return result;
-    }
+    // if (firstWeekMonth.week !== DEFAULT_WEEK) {
+    //   return result;
+    // }
 
-    const nextYearFirstDate = new Date(weekStartDate.getFullYear() + 1, firstWeekMonth.month, 1);
+    const nextYearFirstDate = addYears(firstWeekFirstDate, 1);
+    // nextYearFirstDate = addWeeks(nextYearFirstDate, firstWeekMonth.week);
     const datesDiff = differenceInCalendarDays(nextYearFirstDate, weekStartDate);
     if (datesDiff <= 6) {
       dateDay = Math.abs(this.getDayInView(nextYearFirstDate, weekStartsOn));

@@ -15,8 +15,8 @@ export class AppComponent {
       showWeekNumbers: true,
       weekStartsOn: 0,
       firstWeekMonth: {
-        month: 1,
-        week: 0
+        month: 0,
+        week: 4
       }
     }
   };
