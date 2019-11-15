@@ -23,7 +23,7 @@ export class ExampleSectionComponent implements OnInit {
   }
 
   dayClicked($event) {
-    console.log(this.weekNumberPipe.transform($event.day.date, this.ycConfig.firstWeekMonth, this.ycConfig.weekStartsOn, this.calendarDate.getFullYear()))
+    console.log(this.weekNumberPipe.transform($event.day.date, this.ycConfig));
   }
 
 }

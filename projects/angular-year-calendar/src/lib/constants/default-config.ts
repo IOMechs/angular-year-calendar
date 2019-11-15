@@ -13,5 +13,7 @@ export const DEFAULT_CONFIG: YCConfig = {
   firstWeekMonth:  {
     month: 0,
     week: DEFAULT_WEEK
-  }
+  },
+  forceWeek: false,
+  forceWeekDate: null,
 };

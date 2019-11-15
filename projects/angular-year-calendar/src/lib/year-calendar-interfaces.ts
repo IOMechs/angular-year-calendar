@@ -27,6 +27,8 @@ export interface YCConfig {
     week: number;
     month: number;
   };
+  forceWeek?: boolean;
+  forceWeekDate?: Date;
   weekStartsOn?: number;
   weekNumbersColor?: string;
   dayClass?: string;

@@ -13,10 +13,10 @@ export class AppComponent {
     standard: {
       ...BaseYCOptions,
       showWeekNumbers: true,
-      weekStartsOn: 0,
+      weekStartsOn: 1,
       firstWeekMonth: {
         month: 0,
-        week: 4
+        week: 0
       }
     }
   };
