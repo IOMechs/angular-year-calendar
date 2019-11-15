@@ -17,6 +17,11 @@ export class AppComponent {
       firstWeekMonth: {
         month: 0,
         week: 0
+      },
+      forceWeek: true,
+      forceWeekDate: {
+        month: 2,
+        date: 13
       }
     }
   };

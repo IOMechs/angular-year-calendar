@@ -8,7 +8,7 @@ import { YCConfig } from '../../year-calendar-interfaces';
 })
 export class WeekNumberPipe implements PipeTransform {
 
-  transform(date: Date, ycConfig: YCConfig): any {
+  transform(date: Date, ycConfig: YCConfig, year): any {
     const dateClone = new Date(date);
     const {firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate} = ycConfig;
     let result;
@@ -26,10 +26,21 @@ export class WeekNumberPipe implements PipeTransform {
     let {
       firstWeekFirstDate
     } = this.getFirstWeekFirstDate(dateClone.getFullYear(), firstWeekMonth, weekStartsOn);
-    firstWeekFirstDate = addWeeks(firstWeekFirstDate, firstWeekMonth.week);
-    firstWeekFirstDate.setHours(12, 0, 0, 0);
-    let dateDay = this.getDayInView(dateClone, weekStartsOn);
-    const currentWeekStartDate = subDays(dateClone, dateDay);
+    let dateDay;
+    let currentWeekStartDate;
+    if (forceWeek) {
+      if (!forceWeekDate || isNaN(forceWeekDate.month) || isNaN(forceWeekDate.date)) {
+        throw new Error('forceWeekDate is required when forceWeek is set to true');
+      }
+      firstWeekFirstDate = new Date(year, forceWeekDate.month, forceWeekDate.date);
+      const customDateDay = this.getDayInView(firstWeekFirstDate, weekStartsOn);
+      firstWeekFirstDate = subDays(firstWeekFirstDate, customDateDay);
+    } else {
+      firstWeekFirstDate = addWeeks(firstWeekFirstDate, firstWeekMonth.week);
+      firstWeekFirstDate.setHours(12, 0, 0, 0);
+    }
+    dateDay = this.getDayInView(dateClone, weekStartsOn);
+    currentWeekStartDate = subDays(dateClone, dateDay);
 
     let nextYearFirstDate;
     let previousYearFirstDate;

@@ -73,7 +73,8 @@ export class YearCalendarService {
       for (let i = 0, len = monthWeeksData.monthWeeksCount; i < len; ++i) {
         weekNum = this.weekNumberPipe.transform(
           startDateOfWeek,
-          yearViewConfig
+          yearViewConfig,
+          year
         );
         weekNumbers.push(weekNum);
         startDateOfWeek = addDays(startDateOfWeek, 7);
