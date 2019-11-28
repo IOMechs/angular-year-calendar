@@ -295,7 +295,22 @@
   <p>Here are some examples you can get started with</p>
 
   <div class="card-container">
-    <ycd-example-section title="Basic example" [ycConfig]="ycConfigurations['standard']">
+    <ycd-example-section title="Basic example" [ycConfig]="ycConfigurations['basic']">
+    </ycd-example-section>
+  </div>
+
+  <div class="card-container">
+    <ycd-example-section title="With week numbers" [ycConfig]="ycConfigurations['weekNumbers']">
+    </ycd-example-section>
+  </div>
+
+  <div class="card-container">
+    <ycd-example-section title="Custom week start (Wednesday)" [ycConfig]="ycConfigurations['customWeekStart']">
+    </ycd-example-section>
+  </div>
+
+  <div class="card-container">
+    <ycd-example-section title="Forced week start" [ycConfig]="ycConfigurations['forcedWeek']">
     </ycd-example-section>
   </div>
 

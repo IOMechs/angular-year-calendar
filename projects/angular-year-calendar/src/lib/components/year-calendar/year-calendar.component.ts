@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, ViewChild, TemplateRef } from '@angular/core';
 import { YearCalendarService } from '../../year-calendar.service';
 import { YCConfig } from '../../year-calendar-interfaces';
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
@@ -20,6 +20,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   @Input() daysOfWeek: any = [...DAYS_OF_WEEK];
   @Output() eventDayClicked = new EventEmitter<any>();
   @Output() viewYearChanged = new EventEmitter<any>();
+  @ViewChild('defaultHeaderTemplate', {static: true}) defaultHeaderTemplate: TemplateRef<any>;
   year = new Date().getFullYear();
   yearData = [];
   constructor(
@@ -27,6 +28,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    this.ycConfig.headerTemplate = this.ycConfig.headerTemplate || this.defaultHeaderTemplate;
     this.render(this.selectedDate.getFullYear());
   }
 
@@ -64,7 +66,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   render(year: number = this.year) {
     this.year = year;
     this.daysOfWeek = [...this.getDaysOfWeek()];
-    this.yearData = new Array(12).fill(0).map((monthEl, monthIndex) => {
+    this.yearData = new Array(12).fill(0).map((_, monthIndex) => {
       return {
         date: new Date(this.year, monthIndex + 1, 0),
         weeks: this.createDaysOfMonth(monthIndex, this.year),

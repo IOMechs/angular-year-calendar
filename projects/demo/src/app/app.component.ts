@@ -10,18 +10,31 @@ import { BaseYCOptions } from './constants/base-yc-options';
 export class AppComponent {
   calendarDate = new Date();
   ycConfigurations: Record<string, YCConfig> = {
-    standard: {
+    basic: {
       ...BaseYCOptions,
-      showWeekNumbers: true,
+      showWeekNumbers: false,
       weekStartsOn: 1,
       firstWeekMonth: {
         month: 0,
         week: 0
       },
+    },
+    weekNumbers: {
+      ...BaseYCOptions,
+      showWeekNumbers: true
+    },
+    customWeekStart: {
+      ...BaseYCOptions,
+      showWeekNumbers: true,
+      weekStartsOn: 0,
+    },
+    forcedWeek: {
+      ...BaseYCOptions,
+      showWeekNumbers: true,
       forceWeek: true,
       forceWeekDate: {
         month: 2,
-        date: 13
+        date: 7
       }
     }
   };

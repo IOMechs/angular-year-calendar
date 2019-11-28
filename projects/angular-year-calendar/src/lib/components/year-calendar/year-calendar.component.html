@@ -1,35 +1,8 @@
 <div class="year-calendar">
-  <div class="year-calendar__header" *ngIf="!ycConfig?.hideHeader">
-    <div class="year-calendar__header__options">
-      <button
-        [disabled]="loadingData"
-        *ngIf="!ycConfig?.prevBtn?.hide"
-        class="year-calendar__header__options__option {{ycConfig?.prevBtn?.class}}"
-        (click)="prevYearClick()">
-        {{ycConfig?.prevBtn?.text || 'Previous'}}
-      </button>
-      <button
-        [disabled]="loadingData"
-        *ngIf="!ycConfig?.todayBtn?.hide"
-        class="year-calendar__header__options__option {{ycConfig?.todayBtn?.class}}"
-        (click)="todayClick()">
-        {{ycConfig?.todayBtn?.text || 'Today'}}
-      </button>
-      <button
-      [disabled]="loadingData"
-        *ngIf="!ycConfig?.nextBtn?.hide"
-        class="year-calendar__header__options__option {{ycConfig?.nextBtn?.class}}"
-        (click)="nextYearClick()">
-        {{ycConfig?.nextBtn?.text || 'Next'}}
-      </button>
-    </div>
-    <div class="year-calendar__header__year-name">
-      {{ year }}
-    </div>
-    <div class="year-calendar__header__end-slot">
-      <ng-content select=".header-end">
-      </ng-content>
-    </div>
+  <div class="year-calendar__header" *ngIf="!ycConfig?.hideHeader && ycConfig?.headerTemplate">
+    <ng-container *ngTemplateOutlet="ycConfig?.headerTemplate; context: { ycConfig: this.ycConfig, year: this.year, fns: { todayClick: this.todayClick.bind(this), prevYearClick: this.prevYearClick.bind(this), nextYearClick: this.nextYearClick.bind(this) }}">
+
+    </ng-container>
   </div>
   <div class="year-calendar__body">
     <div
@@ -79,3 +52,37 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #defaultHeaderTemplate let-ycConfig="ycConfig" let-year="year" let-fns="fns">
+  <div class="year-calendar__header__options">
+    <button
+      [disabled]="loadingData"
+      *ngIf="!ycConfig?.prevBtn?.hide"
+      class="year-calendar__header__options__option {{ycConfig?.prevBtn?.class}}"
+      (click)="fns.prevYearClick()">
+      {{ycConfig?.prevBtn?.text || 'Previous'}}
+    </button>
+    <button
+      [disabled]="loadingData"
+      *ngIf="!ycConfig?.todayBtn?.hide"
+      class="year-calendar__header__options__option {{ycConfig?.todayBtn?.class}}"
+      (click)="fns.todayClick()">
+      {{ycConfig?.todayBtn?.text || 'Today'}}
+    </button>
+    <button
+    [disabled]="loadingData"
+      *ngIf="!ycConfig?.nextBtn?.hide"
+      class="year-calendar__header__options__option {{ycConfig?.nextBtn?.class}}"
+      (click)="fns.nextYearClick()">
+      {{ycConfig?.nextBtn?.text || 'Next'}}
+    </button>
+  </div>
+  <div class="year-calendar__header__year-name">
+    {{ year }}
+  </div>
+  <div class="year-calendar__header__end-slot">
+    <ng-content select=".header-end">
+    </ng-content>
+  </div>
+</ng-template>

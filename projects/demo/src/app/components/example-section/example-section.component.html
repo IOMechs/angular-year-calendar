@@ -11,3 +11,32 @@
     </yc-year-calendar>
   </div>
 </div>
+
+<ng-template #customHeaderTemplate let-ycConfig="ycConfig" let-year="year" let-fns="fns">
+  <div class="example-section__year-calendar__header__year-name">
+    {{ year }}
+  </div>
+  <div class="example-section__year-calendar__header__options">
+    <button
+      [disabled]="loadingData"
+      *ngIf="!ycConfig?.prevBtn?.hide"
+      class="year-calendar__header__options__option {{ycConfig?.prevBtn?.class}}"
+      (click)="fns.prevYearClick()">
+      {{ycConfig?.prevBtn?.text || 'Previous'}}
+    </button>
+    <button
+      [disabled]="loadingData"
+      *ngIf="!ycConfig?.todayBtn?.hide"
+      class="example-section__year-calendar__header__options__option {{ycConfig?.todayBtn?.class}}"
+      (click)="fns.todayClick()">
+      {{ycConfig?.todayBtn?.text || 'Today'}}
+    </button>
+    <button
+    [disabled]="loadingData"
+      *ngIf="!ycConfig?.nextBtn?.hide"
+      class="example-section__year-calendar__header__options__option {{ycConfig?.nextBtn?.class}}"
+      (click)="fns.nextYearClick()">
+      {{ycConfig?.nextBtn?.text || 'Next'}}
+    </button>
+  </div>
+</ng-template>

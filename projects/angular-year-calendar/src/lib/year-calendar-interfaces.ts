@@ -1,3 +1,5 @@
+import { TemplateRef } from '@angular/core';
+
 export interface YCDataItem {
   count: number;
   color?: string;
@@ -23,6 +25,7 @@ export interface YCConfig {
   todayBtn?: YCHeaderButton;
   hideHeader?: boolean;
   showWeekNumbers?: boolean;
+  headerTemplate?: TemplateRef<any>;
   firstWeekMonth?: {
     week: number;
     month: number;

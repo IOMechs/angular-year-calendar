@@ -136,4 +136,35 @@ describe('YearCalendarComponent', () => {
     });
   });
 
+  fdescribe('With sunday as week start and march 7th as forced date', () => {
+    beforeEach(() => {
+      component.ycConfig = {
+        ...DEFAULT_CONFIG,
+        ...{
+          showWeekNumbers: true,
+          weekStartsOn: 0,
+          firstWeekMonth: {
+            month: 0,
+            week: 4
+          },
+          forceWeekDate: {
+            month: 2,
+            date: 7
+          },
+          forceWeek: true
+        }
+      };
+    });
+
+    it('should have the correct first week numbers for 2019', () => {
+      component.render(twentyNineteen);
+      expect(component.yearData[2].weekNumbers).toEqual([ 52, 1, 2, 3, 4, 5 ]);
+    });
+
+    it('should have the correct first week numbers for 2021', () => {
+      component.render(twentyTwentyOne);
+      expect(component.yearData[2].weekNumbers).toEqual([ 52, 1, 2, 3, 4 ]);
+    });
+  });
+
 });

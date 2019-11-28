@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { YCConfig, WeekNumberPipe } from 'projects/angular-year-calendar/src/public-api';
 
 @Component({
@@ -12,10 +12,15 @@ export class ExampleSectionComponent implements OnInit {
   @Input() ycConfig: YCConfig;
   @Input() loadingData = false;
   @Input() calendarDate = new Date();
+  @ViewChild('customHeaderTemplate', { static: true }) customHeaderTemplate: TemplateRef<any>;
   weekNumberPipe = new WeekNumberPipe();
   constructor() { }
 
   ngOnInit() {
+    this.ycConfig = {
+      ...this.ycConfig,
+      headerTemplate: this.customHeaderTemplate
+    };
   }
 
   yearChanged($event) {

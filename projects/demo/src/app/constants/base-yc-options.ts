@@ -7,15 +7,16 @@ export const BaseYCOptions: YCConfig = {
   },
   data: [],
   nextBtn: {
-    text: '>',
-    class: 'btn btn-link btn-sm',
+    text: 'Next',
+    class: 'btn btn-dark',
   },
   prevBtn: {
-    text: '<',
-    class: 'btn btn-link btn-sm',
+    text: 'Previous',
+    class: 'btn btn-dark',
   },
   todayBtn: {
-    hide: false
+    hide: false,
+    class: 'btn btn-primary'
   },
   firstWeekMonth: {
     month: 0, // January
@@ -23,6 +24,6 @@ export const BaseYCOptions: YCConfig = {
   },
   showWeekNumbers: false,
   weekNumbersColor: '#778CA2',
-  dayClass: 'icp-year-calendar-day',
+  dayClass: 'year-calendar-day',
   maxValue: 10 // let the component calculate the max value from all values,
 };

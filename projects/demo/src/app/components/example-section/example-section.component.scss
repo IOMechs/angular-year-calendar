@@ -1,0 +1,10 @@
+.example-section {
+  &__year-calendar {
+    &__header {
+      &__year-name {
+        flex: 1;
+        font-size: 18px;
+      }
+    }
+  }
+}
