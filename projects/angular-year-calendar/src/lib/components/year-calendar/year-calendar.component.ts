@@ -40,6 +40,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
         ...DEFAULT_CONFIG,
         ...this.ycConfig
       };
+      this.ycConfig.headerTemplate = this.ycConfig.headerTemplate || this.defaultHeaderTemplate;
       if (
         previousValue && currentValue &&
         ((previousValue.data.length !== currentValue.data.length) ||
