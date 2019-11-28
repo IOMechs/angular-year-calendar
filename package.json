@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "publish:lib": "npm run build:lib && cd ./dist/angular-year-calendar && npm publish --access public",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng deploy demo --base-href=/angular-year-calendar/"
   },
   "private": true,
   "dependencies": {
