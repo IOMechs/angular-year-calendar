@@ -1,27 +1,36 @@
-# AngularYearCalendar
+# AngularYearCalendar (@iomechs/angular-year-calendar)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
+## Usage
 
-## Development server
+Install the package in your project's folder by using npm or yarn:
+```bash
+npm install @iomechs/angular-year-calendar --save
+# OR
+yarn add @iomechs/angular-year-calendar -S
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Import YearCalendarModule in your AppModule as below:
 
-## Code scaffolding
+```typescript
+import { YearCalendarModule } from '@iomechs/angular-year-calendar';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    YearCalendarModule, // <-- here
+  ]
+});
+```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Then in your HTML, you can use as:
+```html
+<yc-year-calendar [loadingData]="isLoadingData"
+  (viewYearChanged)="viewYearChangedHandler($event)" (eventDayClicked)="eventDayClickHandler($event);"
+  [calendarOptions]="yearCalendarOptions" [selectedDate]="currentDate">
+</yc-year-calendar>
+```

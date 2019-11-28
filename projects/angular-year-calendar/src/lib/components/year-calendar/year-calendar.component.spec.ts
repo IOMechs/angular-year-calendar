@@ -136,7 +136,7 @@ describe('YearCalendarComponent', () => {
     });
   });
 
-  fdescribe('With sunday as week start and march 7th as forced date', () => {
+  describe('With sunday as week start and march 7th as forced date', () => {
     beforeEach(() => {
       component.ycConfig = {
         ...DEFAULT_CONFIG,
