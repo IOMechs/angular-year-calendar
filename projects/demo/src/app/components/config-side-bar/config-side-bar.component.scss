@@ -1,0 +1,76 @@
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+
+.config-side-bar {
+  height: 100%;
+  width: 400px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in;
+  &__left {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__icon {
+      background: #344960;
+      color: white;
+      border: 1px solid #eee;
+      box-shadow: 0px 2px 14px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px 10px;
+      border-right: transparent;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      cursor: pointer;
+      &__svg {
+        animation: spin infinite linear 3s;
+        fill: white;
+        transform: rotateX(90);
+      }
+    }
+  }
+  &__main {
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    background-color: white;
+    box-shadow: 0px 2px 14px 4px rgba(0, 0, 0, 0.1);
+    &__close {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      cursor: pointer;
+      &__svg {
+        width: 36px;
+        height: 36px;
+        &:hover {
+          fill: #666;
+        }
+      }
+    }
+    &__options {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

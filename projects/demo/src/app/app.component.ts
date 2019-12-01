@@ -9,33 +9,32 @@ import { BaseYCOptions } from './constants/base-yc-options';
 })
 export class AppComponent {
   calendarDate = new Date();
+  isConfigBarOpened: boolean;
   ycConfigurations: Record<string, YCConfig> = {
     basic: {
       ...BaseYCOptions,
-      showWeekNumbers: false,
-      weekStartsOn: 1,
-      firstWeekMonth: {
-        month: 0,
-        week: 0
-      },
-    },
-    weekNumbers: {
-      ...BaseYCOptions,
-      showWeekNumbers: true
-    },
-    customWeekStart: {
-      ...BaseYCOptions,
-      showWeekNumbers: true,
-      weekStartsOn: 0,
-    },
-    forcedWeek: {
-      ...BaseYCOptions,
-      showWeekNumbers: true,
-      forceWeek: true,
-      forceWeekDate: {
-        month: 2,
-        date: 7
-      }
     }
   };
+
+  onConfigChanged(config) {
+    console.log(config);
+    this.ycConfigurations.basic = {
+      ...this.ycConfigurations.basic,
+      hideHeader: config.hideHeader,
+      nextBtn: {
+        ...this.ycConfigurations.basic.nextBtn,
+        text: config.nextBtnText
+      },
+      prevBtn: {
+        ...this.ycConfigurations.basic.prevBtn,
+        text: config.prevBtnText
+      },
+      showWeekNumbers: config.showWeekNumbers,
+      weekStartsOn: +config.weekStartsOn
+    };
+  }
+
+  onConfigBarToggled(value) {
+    this.isConfigBarOpened = value;
+  }
 }

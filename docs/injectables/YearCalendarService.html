@@ -1,0 +1,713 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@iomechs/angular-year-calendar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@iomechs/angular-year-calendar</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>YearCalendarService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/angular-year-calendar/src/lib/year-calendar.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#weekNumberPipe">weekNumberPipe</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getMonthWeeks">getMonthWeeks</a>
+                            </li>
+                            <li>
+                                <a href="#getWeekNumbers">getWeekNumbers</a>
+                            </li>
+                            <li>
+                                <a href="#isConfigChanged">isConfigChanged</a>
+                            </li>
+                            <li>
+                                <a href="#isYearDataChanged">isYearDataChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMonthWeeks"></a>
+                    <span class="name">
+                        <b>
+                            getMonthWeeks
+                        </b>
+                        <a href="#getMonthWeeks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMonthWeeks(month, year, weekStartsOn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:17</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>month</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>year</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>new Date().getFullYear()</code>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>weekStartsOn</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>0</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{ firstDayOfMonth: any; lastDayOfMonth: any; monthFirstDate: any; monthLastDate: any; monthWeeksC...</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The first day of the month, the last day of the month and the number of weeks in the month</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getWeekNumbers"></a>
+                    <span class="name">
+                        <b>
+                            getWeekNumbers
+                        </b>
+                        <a href="#getWeekNumbers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getWeekNumbers(month: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, year: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, yearViewConfig: <a href="../interfaces/YCConfig.html">YCConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>month</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>year</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>yearViewConfig</td>
+                                    <td>
+                                                <code><a href="../interfaces/YCConfig.html" target="_self" >YCConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>an array of week numbers</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isConfigChanged"></a>
+                    <span class="name">
+                        <b>
+                            isConfigChanged
+                        </b>
+                        <a href="#isConfigChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isConfigChanged(previousValue: <a href="../interfaces/YCConfig.html">YCConfig</a>, currentValue: <a href="../interfaces/YCConfig.html">YCConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>previousValue</td>
+                                    <td>
+                                                <code><a href="../interfaces/YCConfig.html" target="_self" >YCConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>currentValue</td>
+                                    <td>
+                                                <code><a href="../interfaces/YCConfig.html" target="_self" >YCConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isYearDataChanged"></a>
+                    <span class="name">
+                        <b>
+                            isYearDataChanged
+                        </b>
+                        <a href="#isYearDataChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isYearDataChanged(previousData: [], currentData: [])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>previousData</td>
+                                    <td>
+                                            <code>[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>[]</code>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>currentData</td>
+                                    <td>
+                                            <code>[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>[]</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="weekNumberPipe"></a>
+                        <span class="name">
+                            <b>
+                            weekNumberPipe</b>
+                            <a href="#weekNumberPipe"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new WeekNumberPipe()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { YCConfig } from &#x27;./year-calendar-interfaces&#x27;;
+import { WeekNumberPipe } from &#x27;./pipes/week-number/week-number.pipe&#x27;;
+import { addDays, subDays, differenceInDays, addYears } from &#x27;date-fns&#x27;;
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class YearCalendarService {
+  weekNumberPipe &#x3D; new WeekNumberPipe();
+  constructor() { }
+
+  /**
+   * @author Ahsan Ayaz
+   * @desc Calculates the number of weeks for the particular month provided.
+   * @returns The first day of the month, the last day of the month and the number of weeks in the month
+   */
+  getMonthWeeks(month, year &#x3D; new Date().getFullYear(), weekStartsOn &#x3D; 0) {
+    let monthFirstDate &#x3D; new Date(year, month, 1);
+    const firstDayOfMonth &#x3D; this.weekNumberPipe.getDayInView(monthFirstDate, weekStartsOn);
+    if (firstDayOfMonth &gt; 0) {
+      monthFirstDate &#x3D; subDays(monthFirstDate, firstDayOfMonth);
+    } else if (firstDayOfMonth &lt; 0) {
+      monthFirstDate &#x3D; addDays(monthFirstDate, firstDayOfMonth);
+    }
+    const monthLastDate &#x3D; new Date(year, month + 1, 0);
+    const lastDayOfMonth &#x3D; this.weekNumberPipe.getDayInView(monthLastDate, weekStartsOn);
+    let diff;
+    if (lastDayOfMonth &#x3D;&#x3D;&#x3D; 6) {
+      diff &#x3D; differenceInDays(monthFirstDate, monthLastDate);
+    } else {
+      diff &#x3D; differenceInDays(monthFirstDate, addDays(monthLastDate, (6 - lastDayOfMonth)));
+    }
+    const monthWeeksCount &#x3D; Math.round(Math.abs(diff) / 7);
+    const yearStartDate &#x3D; new Date(year, month, 1);
+    const yearWeeks &#x3D; this.weekNumberPipe.getTotalWeeks(new Date(year, month, 1), addYears(yearStartDate, 1));
+    return {
+      firstDayOfMonth,
+      lastDayOfMonth,
+      monthFirstDate,
+      monthLastDate,
+      monthWeeksCount,
+      yearWeeks
+    };
+  }
+
+  /**
+   * @author Ahsan Ayaz
+   * @desc Compares the year calendar data for counts.
+   * If any of the previous record has a different count than the current one, we return true.
+   */
+  isYearDataChanged(previousData &#x3D; [], currentData &#x3D; []) {
+    for (let i &#x3D; 0, len &#x3D; currentData.length; i &lt; len; ++i) {
+      if (previousData[i] &amp;&amp; currentData[i].count !&#x3D;&#x3D; previousData[i].count) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * @author Ahsan Ayaz
+   * @desc Calculates the week numbers according to fiscal config provided
+   * @returns an array of week numbers
+   */
+  getWeekNumbers(month: number, year: number, yearViewConfig: YCConfig) {
+    if (!yearViewConfig || !yearViewConfig.showWeekNumbers || !(yearViewConfig.firstWeekMonth.month &gt;&#x3D; 0)) {
+      return [];
+    } else {
+      const weekNumbers &#x3D; [];
+      const monthWeeksData &#x3D; this.getMonthWeeks(month, year, yearViewConfig.weekStartsOn);
+      let weekNum;
+      let startDateOfWeek &#x3D; monthWeeksData.monthFirstDate;
+      for (let i &#x3D; 0, len &#x3D; monthWeeksData.monthWeeksCount; i &lt; len; ++i) {
+        weekNum &#x3D; this.weekNumberPipe.transform(
+          startDateOfWeek,
+          yearViewConfig,
+          year
+        );
+        weekNumbers.push(weekNum);
+        startDateOfWeek &#x3D; addDays(startDateOfWeek, 7);
+      }
+      return weekNumbers;
+    }
+  }
+
+  isConfigChanged(previousValue: YCConfig, currentValue: YCConfig) {
+    return (
+      (previousValue.forceWeek !&#x3D;&#x3D; currentValue.forceWeek) ||
+      (previousValue.forceWeekDate !&#x3D;&#x3D; currentValue.forceWeekDate) ||
+      (previousValue.headerTemplate !&#x3D;&#x3D; currentValue.headerTemplate) ||
+      (previousValue.hideHeader !&#x3D;&#x3D; currentValue.hideHeader) ||
+      (previousValue.maxValue !&#x3D;&#x3D; currentValue.maxValue) ||
+      (previousValue.nextBtn !&#x3D;&#x3D; currentValue.nextBtn) || // obj
+      (previousValue.prevBtn !&#x3D;&#x3D; currentValue.prevBtn) || // obj
+      (previousValue.showWeekNumbers !&#x3D;&#x3D; currentValue.showWeekNumbers) ||
+      (previousValue.themeColors !&#x3D;&#x3D; currentValue.themeColors) || // obj
+      (previousValue.todayBtn !&#x3D;&#x3D; currentValue.todayBtn) || // obj
+      (previousValue.weekStartsOn !&#x3D;&#x3D; currentValue.weekStartsOn)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'YearCalendarService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -33,7 +33,7 @@ describe('YearCalendarComponent', () => {
   describe('default config', () => {
     beforeEach(() => {
       component.ycConfig = {...DEFAULT_CONFIG};
-    })
+    });
     afterEach(() => {
       component.ycConfig = {...DEFAULT_CONFIG};
     });

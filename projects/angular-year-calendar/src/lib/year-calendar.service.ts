@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { YCConfig } from './year-calendar-interfaces';
 import { WeekNumberPipe } from './pipes/week-number/week-number.pipe';
-import { getISOWeeksInYear, addDays, subDays, differenceInDays, getDaysInMonth, addYears } from 'date-fns';
+import { addDays, subDays, differenceInDays, addYears } from 'date-fns';
 @Injectable({
   providedIn: 'root'
 })
@@ -81,5 +81,21 @@ export class YearCalendarService {
       }
       return weekNumbers;
     }
+  }
+
+  isConfigChanged(previousValue: YCConfig, currentValue: YCConfig) {
+    return (
+      (previousValue.forceWeek !== currentValue.forceWeek) ||
+      (previousValue.forceWeekDate !== currentValue.forceWeekDate) ||
+      (previousValue.headerTemplate !== currentValue.headerTemplate) ||
+      (previousValue.hideHeader !== currentValue.hideHeader) ||
+      (previousValue.maxValue !== currentValue.maxValue) ||
+      (previousValue.nextBtn !== currentValue.nextBtn) || // obj
+      (previousValue.prevBtn !== currentValue.prevBtn) || // obj
+      (previousValue.showWeekNumbers !== currentValue.showWeekNumbers) ||
+      (previousValue.themeColors !== currentValue.themeColors) || // obj
+      (previousValue.todayBtn !== currentValue.todayBtn) || // obj
+      (previousValue.weekStartsOn !== currentValue.weekStartsOn)
+    );
   }
 }

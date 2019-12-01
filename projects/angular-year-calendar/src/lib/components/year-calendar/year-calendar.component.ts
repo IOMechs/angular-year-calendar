@@ -46,7 +46,8 @@ export class YearCalendarComponent implements OnInit, OnChanges {
         ((previousValue.data.length !== currentValue.data.length) ||
         (previousValue.data[0] && currentValue.data[0] &&
         previousValue.data[0].date !== currentValue.data[0].date)) ||
-        (previousValue && this.ycService.isYearDataChanged(previousValue.data, currentValue.data))
+        (previousValue && this.ycService.isYearDataChanged(previousValue.data, currentValue.data)) ||
+        (previousValue && this.ycService.isConfigChanged(previousValue, currentValue))
       ) {
         this.render(this.year);
       }
