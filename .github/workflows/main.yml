@@ -1,0 +1,41 @@
+# GitHub Actions docs
+# https://help.github.com/en/articles/about-github-actions
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    # Machine environment:
+    # https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions#ubuntu-1804-lts
+    # We specify the Node.js version manually below, and use versioned Chrome from Puppeteer.
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.8
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.8
+    - name: Install dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Build
+      run: npm run build:ci
+    - name: Test
+      run: npm run test:lib
+    - name: Copy Demo
+      run: npm run copy:demo:ci
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: master # The branch the action should deploy from.
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: docs # The folder the action should deploy.
