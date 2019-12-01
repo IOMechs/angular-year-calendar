@@ -26,13 +26,15 @@ jobs:
       run: npm install
     - name: Lint
       run: npm run lint
-    - name: Build
+    - name: Build Demo
       run: npm run build:ci
     - name: Test
       run: npm run test:lib
+    - name: Docs
+      run: npm run docs:build
     - name: Copy Demo
       run: npm run copy:demo:ci
-    - name: Build and Deploy
+    - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
