@@ -1,6 +1,9 @@
 # Angular Year Calendar
 ##### @iomechs/angular-year-calendar
 
+[![Actions Status](https://github.com/iomechs/angular-year-calendar/workflows/CI/badge.svg)](https://github.com/iomechs/angular-year-calendar/actions)
+
+
 A simple, easily to use Year calendar for your Angular apps.
 
 ![@iomechs/angular-year-calendar](https://i.imgur.com/IS6Sn66.gif)
