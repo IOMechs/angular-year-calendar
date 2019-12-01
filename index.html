@@ -31,7 +31,14 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angularyearcalendar-iomechsangular-year-calendar">AngularYearCalendar (@iomechs/angular-year-calendar)</h1>
+<h1 id="angular-year-calendar">Angular Year Calendar</h1>
+<h5 id="iomechsangular-year-calendar">@iomechs/angular-year-calendar</h5>
+<p>A simple, easily to use Year calendar for your Angular apps.</p>
+<p><img src="https://i.imgur.com/IS6Sn66.gif" alt="@iomechs/angular-year-calendar" class="img-responsive"></p>
+<h2 id="demo">Demo</h2>
+<p><a href="https://iomechs.github.io/angular-year-calendar/demo">https://iomechs.github.io/angular-year-calendar/demo</a></p>
+<h2 id="docs">Docs</h2>
+<p><a href="https://iomechs.github.io/angular-year-calendar">https://iomechs.github.io/angular-year-calendar</a></p>
 <h2 id="usage">Usage</h2>
 <p>Install the package in your project&#39;s folder by using npm or yarn:</p>
 <div><pre class="line-numbers"><code class="language-bash">npm install &#64;iomechs/angular-year-calendar --save
@@ -52,9 +59,12 @@ yarn add &#64;iomechs/angular-year-calendar -S</code></pre></div><p>Import YearC
     YearCalendarModule, // &lt;-- here
   ]
 });</code></pre></div><p>Then in your HTML, you can use as:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;yc-year-calendar [loadingData]=&quot;isLoadingData&quot;
-  (viewYearChanged)=&quot;viewYearChangedHandler($event)&quot; (eventDayClicked)=&quot;eventDayClickHandler($event);&quot;
-  [calendarOptions]=&quot;yearCalendarOptions&quot; [selectedDate]=&quot;currentDate&quot;&gt;
+<div><pre class="line-numbers"><code class="language-html">&lt;yc-year-calendar
+  [loadingData]=&quot;isLoadingData&quot;
+  (viewYearChanged)=&quot;viewYearChangedHandler($event&quot;
+  (eventDayClicked)=&quot;eventDayClickHandler($event)&quot;
+  [ycConfig]=&quot;myCalendarConfig&quot;
+  [selectedDate]=&quot;currentDate&quot;&gt;
 &lt;/yc-year-calendar&gt;</code></pre></div>
 
 
