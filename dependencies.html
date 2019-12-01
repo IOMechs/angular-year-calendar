@@ -28,34 +28,9 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content getting-started">
+               <div class="content package-dependencies">
                    <div class="content-data">
 
-<h1 id="angularyearcalendar-iomechsangular-year-calendar">AngularYearCalendar (@iomechs/angular-year-calendar)</h1>
-<h2 id="usage">Usage</h2>
-<p>Install the package in your project&#39;s folder by using npm or yarn:</p>
-<div><pre class="line-numbers"><code class="language-bash">npm install &#64;iomechs/angular-year-calendar --save
-
-# OR
-
-yarn add &#64;iomechs/angular-year-calendar -S</code></pre></div><p>Import YearCalendarModule in your AppModule as below:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { YearCalendarModule } from &#39;&#64;iomechs/angular-year-calendar&#39;;
-
-&#64;NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    YearCalendarModule, // &lt;-- here
-  ]
-});</code></pre></div><p>Then in your HTML, you can use as:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;yc-year-calendar [loadingData]=&quot;isLoadingData&quot;
-  (viewYearChanged)=&quot;viewYearChangedHandler($event)&quot; (eventDayClicked)=&quot;eventDayClickHandler($event);&quot;
-  [calendarOptions]=&quot;yearCalendarOptions&quot; [selectedDate]=&quot;currentDate&quot;&gt;
-&lt;/yc-year-calendar&gt;</code></pre></div>
 
 
 
@@ -68,6 +43,40 @@ yarn add &#64;iomechs/angular-year-calendar -S</code></pre></div><p>Import YearC
 
 
 
+
+    <ol class="breadcrumb">
+        <li>Dependencies</li>
+    </ol>
+    <ul class="dependencies-list">
+        <li>
+            <b>@angular/animations</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/cdk</b> : ^8.2.3</li>
+        <li>
+            <b>@angular/common</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/compiler</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/core</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/forms</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/platform-browser</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/platform-browser-dynamic</b> : ~8.2.11</li>
+        <li>
+            <b>@angular/router</b> : ~8.2.11</li>
+        <li>
+            <b>angular-cli-ghpages</b> : ^0.6.0</li>
+        <li>
+            <b>date-fns</b> : ^2.5.1</li>
+        <li>
+            <b>rxjs</b> : ~6.4.0</li>
+        <li>
+            <b>tslib</b> : ^1.10.0</li>
+        <li>
+            <b>zone.js</b> : ~0.9.1</li>
+    </ul>
 
                    
 
@@ -90,8 +99,8 @@ yarn add &#64;iomechs/angular-year-calendar -S</code></pre></div><p>Import YearC
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
-            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'package-dependencies';
+            var COMPODOC_CURRENT_PAGE_URL = 'dependencies.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
