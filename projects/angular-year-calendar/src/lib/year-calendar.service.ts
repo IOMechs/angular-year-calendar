@@ -93,7 +93,7 @@ export class YearCalendarService {
       (previousValue.nextBtn !== currentValue.nextBtn) || // obj
       (previousValue.prevBtn !== currentValue.prevBtn) || // obj
       (previousValue.showWeekNumbers !== currentValue.showWeekNumbers) ||
-      (previousValue.themeColors !== currentValue.themeColors) || // obj
+      (previousValue.heatmapColor !== currentValue.heatmapColor) || // obj
       (previousValue.todayBtn !== currentValue.todayBtn) || // obj
       (previousValue.weekStartsOn !== currentValue.weekStartsOn)
     );

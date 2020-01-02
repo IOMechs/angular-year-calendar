@@ -1,10 +1,7 @@
 import { YCConfig } from 'projects/angular-year-calendar/src/public-api';
 
 export const BaseYCOptions: YCConfig = {
-  themeColors: {
-    primary: 0, // red
-    secondary: 60 // yellow
-  },
+  heatmapColor: '#FF5500',
   data: [],
   nextBtn: {
     text: 'Next',

@@ -6,17 +6,12 @@ import { Directive, Input, ElementRef, OnInit } from '@angular/core';
 export class HeatmapColorDirective implements OnInit {
   @Input() value = 0;
   @Input() maxValue = null;
-  @Input() primaryColor: number;
-  @Input() secondaryColor: number;
-  @Input() companyColor: string;
+  @Input() heatmapColor: string;
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
-    if (!this.value) {  // if the value on the day is undefined, assign 0
-      this.value = 0;
-    }
     // apply the heatmap color
-    this.el.nativeElement.style.backgroundColor = this.companyColor ? this.hexToHsl() : this.calculateColor();
+    this.applyColor();
   }
 
   /**
@@ -24,30 +19,23 @@ export class HeatmapColorDirective implements OnInit {
    * @desc Applies the heatmap color as the background of the day if company have no color
    */
 
-  calculateColor() {
-    const colorPercentage = (this.value / this.maxValue);
-    if (colorPercentage === 0) {  // if the value on the day is 0, return the background as transparent
-      return 'transparent';
+  applyColor() {
+    if (!this.value) {  // if the value on the day is undefined, assign 0
+      this.value = 0;
     }
-    const colorRangeEnd = this.primaryColor;
-    const colorRangeStart = this.secondaryColor;
-    const percentFactor = (colorRangeEnd - colorRangeStart) * colorPercentage;
-    const colorToApply = Math.round(percentFactor) + colorRangeStart;
-
-    // Return a CSS HSL string
-    return `hsl( ${colorToApply}, 100%, 50%)`;
+    this.el.nativeElement.style.backgroundColor = this.hexToHsl(this.heatmapColor, this.value, this.maxValue);
   }
 
-/**
- * @author Mohsin Ayaz
- * @desc Applies the heatmap color as the background of the day if company have color
- */
+  /**
+   * @author Mohsin Ayaz
+   * @desc Applies the heatmap color as the background color
+   */
 
-  hexToHsl() {
-    if (this.value === 0 ) {  // if the value on the day is 0, return the background as transparent
+  hexToHsl(heatmapColor, value, maxValue) {
+    if (value === 0 ) {  // if the value on the day is 0, return the background as transparent
       return 'transparent';
     }
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this.companyColor);
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
 
     let r = parseInt(result[1], 16);
     let g = parseInt(result[2], 16);
@@ -79,8 +67,8 @@ export class HeatmapColorDirective implements OnInit {
     h = Math.round(360 * h);
 
     // Calculate the color frequency of l value
-    this.maxValue = this.maxValue ? this.maxValue : 0;
-    const perc = ((this.value / this.maxValue) * (100 - l));
+    maxValue = maxValue ? maxValue : 0;
+    const perc = ((value / maxValue) * (100 - l));
     l = 100 - perc;
     l = Math.round(l);
 

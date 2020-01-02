@@ -32,8 +32,7 @@
               ycHeatmapColor
               [value]="day?.value"
               [maxValue]="ycConfig.maxValue"
-              [primaryColor]="ycConfig.themeColors.primary"
-              [secondaryColor]="ycConfig.themeColors.secondary"
+              [heatmapColor]="ycConfig.heatmapColor"
               [ngClass]="{'year-calendar__body__month__inner__week__day--today': (!!day && !!day.isToday), 'year-calendar__body__month__inner__week__day--has-value':  (!!day?.value)}"
               class="year-calendar__body__month__inner__week__day {{ycConfig?.dayClass}}"
               cdkOverlayOrigin
