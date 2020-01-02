@@ -13,7 +13,6 @@ export const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   styleUrls: ['./year-calendar.component.scss']
 })
 export class YearCalendarComponent implements OnInit, OnChanges {
-  @Input() themeColor = 'ff0000';
   @Input() selectedDate: Date = new Date();
   @Input() loadingData: boolean;
   @Input() ycConfig: YCConfig = DEFAULT_CONFIG;

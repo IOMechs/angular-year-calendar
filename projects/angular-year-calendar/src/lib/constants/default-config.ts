@@ -4,10 +4,7 @@ export const DEFAULT_WEEK = 0;
 
 export const DEFAULT_CONFIG: YCConfig = {
   data: [],
-  themeColors: {
-    primary: 0,
-    secondary: 60
-  },
+  heatmapColor: '#FF5500',
   weekStartsOn: 0,
   showWeekNumbers: false,
   firstWeekMonth:  {

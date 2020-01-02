@@ -15,10 +15,7 @@ export interface YCHeaderButton {
 export interface YCConfig {
   // the theme colors are basically color ranges according to hsl color constants. The `H` value to be exact.
   // See information here https://www.w3schools.com/colors/colors_hsl.asp
-  themeColors?: {
-    primary: number,
-    secondary: number
-  };  // the theme color
+  heatmapColor: string;
   data: Array<YCDataItem>;
   nextBtn?: YCHeaderButton;
   prevBtn?: YCHeaderButton;
