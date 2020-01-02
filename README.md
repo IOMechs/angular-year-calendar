@@ -4,6 +4,14 @@
 [![Actions Status](https://github.com/iomechs/angular-year-calendar/workflows/CI/badge.svg)](https://github.com/iomechs/angular-year-calendar/actions)
 
 
+<a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/v/@iomechs/angular-year-calendar.svg" alt="npm version" ></a>
+<a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/github/stars/IOMechs/angular-year-calendar.svg?style=social&label=Star&style=flat-square" alt="github stars" ></a>
+<a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/l/@iomechs/angular-year-calendar.svg?style=flat-square" alt="license" ></a>
+
+<a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/dt/@iomechs/angular-year-calendar.svg?style=flat-square" alt="npm downloads total" ></a>
+<a href="https://www.npmjs.com/package/ngx-device-detector"><img src="https://img.shields.io/npm/dm/@iomechs/angular-year-calendar.svg" alt="npm downloads/month" ></a>
+
+
 A simple, easily to use Year calendar for your Angular apps.
 
 ![@iomechs/angular-year-calendar](https://i.imgur.com/IS6Sn66.gif)

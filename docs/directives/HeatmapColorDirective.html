@@ -99,7 +99,7 @@
                                 <a href="#applyColor">applyColor</a>
                             </li>
                             <li>
-                                <a href="#calculateColor">calculateColor</a>
+                                <a href="#hexToHsl">hexToHsl</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit">ngOnInit</a>
@@ -117,13 +117,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#heatmapColor">heatmapColor</a>
+                            </li>
+                            <li>
                                 <a href="#maxValue">maxValue</a>
-                            </li>
-                            <li>
-                                <a href="#primaryColor">primaryColor</a>
-                            </li>
-                            <li>
-                                <a href="#secondaryColor">secondaryColor</a>
                             </li>
                             <li>
                                 <a href="#value">value</a>
@@ -150,7 +147,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -194,33 +191,13 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="maxValue"></a>
-                        <b>maxValue</b>
+                        <a name="heatmapColor"></a>
+                        <b>heatmapColor</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>null</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:8</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="primaryColor"></a>
-                        <b>primaryColor</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </td>
                 </tr>
@@ -235,19 +212,18 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="secondaryColor"></a>
-                        <b>secondaryColor</b>
+                        <a name="maxValue"></a>
+                        <b>maxValue</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
+                        <i>Default value : </i><code>null</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:8</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -324,26 +300,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="calculateColor"></a>
+                    <a name="hexToHsl"></a>
                     <span class="name">
                         <b>
-                            calculateColor
+                            hexToHsl
                         </b>
-                        <a href="#calculateColor"><span class="icon ion-ios-link"></span></a>
+                        <a href="#hexToHsl"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>calculateColor(percentageVal)</code>
+<code>hexToHsl(heatmapColor, value, maxValue)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:34</a></div>
                 </td>
             </tr>
 
@@ -362,7 +338,25 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>percentageVal</td>
+                                    <td>heatmapColor</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>maxValue</td>
 
                                     <td>
                                         No
@@ -408,8 +402,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:12</a></div>
                 </td>
             </tr>
 
@@ -440,8 +434,7 @@
 export class HeatmapColorDirective implements OnInit {
   @Input() value &#x3D; 0;
   @Input() maxValue &#x3D; null;
-  @Input() primaryColor: number;
-  @Input() secondaryColor: number;
+  @Input() heatmapColor: string;
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
@@ -451,30 +444,65 @@ export class HeatmapColorDirective implements OnInit {
 
   /**
    * @author Ahsan Ayaz
-   * @desc Applies the heatmap color as the background of the day
+   * @desc Applies the heatmap color as the background of the day if company have no color
    */
+
   applyColor() {
     if (!this.value) {  // if the value on the day is undefined, assign 0
       this.value &#x3D; 0;
     }
-    const colorPercentage &#x3D; (this.value / this.maxValue); // calculating percentage for hue value analysis
-    this.el.nativeElement.style.backgroundColor &#x3D; this.calculateColor(colorPercentage) ;  // assigns the background color here
+    this.el.nativeElement.style.backgroundColor &#x3D; this.hexToHsl(this.heatmapColor, this.value, this.maxValue);
   }
 
-  calculateColor(percentageVal) {
-    if (percentageVal &#x3D;&#x3D;&#x3D; 0) {  // if the value on the day is 0, assign the background as transparent
+  /**
+   * @author Mohsin Ayaz
+   * @desc Applies the heatmap color as the background color
+   */
+
+  hexToHsl(heatmapColor, value, maxValue) {
+    if (value &#x3D;&#x3D;&#x3D; 0 ) {  // if the value on the day is 0, return the background as transparent
       return &#x27;transparent&#x27;;
     }
+    const result &#x3D; /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
 
-    const colorRangeEnd &#x3D; this.primaryColor;
-    const colorRangeStart &#x3D; this.secondaryColor;
-    const percentFactor &#x3D; (colorRangeEnd - colorRangeStart) * percentageVal;
-    const colorToApply &#x3D; percentFactor + colorRangeStart;
+    let r &#x3D; parseInt(result[1], 16);
+    let g &#x3D; parseInt(result[2], 16);
+    let b &#x3D; parseInt(result[3], 16);
+
+    r /&#x3D; 255, g /&#x3D; 255, b /&#x3D; 255;
+    const max &#x3D; Math.max(r, g, b);
+    const min &#x3D; Math.min(r, g, b);
+    let h &#x3D; (max + min) / 2;
+    let s &#x3D; (max + min) / 2;
+    let l &#x3D; (max + min) / 2;
+
+    if (max &#x3D;&#x3D;&#x3D; min) {
+        h &#x3D; s &#x3D; 0; // achromatic
+    } else {
+        const d &#x3D; max - min;
+        s &#x3D; l &gt; 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h &#x3D; (g - b) / d + (g &lt; b ? 6 : 0); break;
+            case g: h &#x3D; (b - r) / d + 2; break;
+            case b: h &#x3D; (r - g) / d + 4; break;
+        }
+        h /&#x3D; 6;
+    }
+
+    s &#x3D; s * 100;
+    s &#x3D; Math.round(s);
+    l &#x3D; l * 100;
+    h &#x3D; Math.round(360 * h);
+
+    // Calculate the color frequency of l value
+    maxValue &#x3D; maxValue ? maxValue : 0;
+    const perc &#x3D; ((value / maxValue) * (100 - l));
+    l &#x3D; 100 - perc;
+    l &#x3D; Math.round(l);
 
     // Return a CSS HSL string
-    return &#x60;hsl( ${colorToApply}, 100%, 50%)&#x60;;
+    return &#x27;hsl(&#x27; + h + &#x27;, &#x27; + s + &#x27;%, &#x27; + l + &#x27;%)&#x27;;
   }
-
 }
 </code></pre>
     </div>
