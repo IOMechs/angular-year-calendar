@@ -9,13 +9,13 @@ import { By } from '@angular/platform-browser';
       ycHeatmapColor
       [value]="dayValue"
       [maxValue]="10"
-      [primaryColor]="0"
-      [secondaryColor]="60">
+      [heatmapColor]="heatmapColorHex">
     </div>
   `
 })
 class TestHeatmapColorComponent {
-  dayValue = 3;
+  dayValue = 0;
+  heatmapColorHex = '';
 }
 
 describe('HeatmapColorDirective', () => {
@@ -37,8 +37,21 @@ describe('HeatmapColorDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  it('should set the background color of the day value to rgb(255, 179, 0) provided day value is 3', () => {
-    fixture.detectChanges();
-    expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(255, 179, 0)');
+  describe('With 6 digit hex color', () => {
+    it('should set the background color of the day value to rgb(194, 194, 194) provided day value is 3 and hex color is #333333', () => {
+      component.dayValue = 3;
+      component.heatmapColorHex = '#333333';
+      fixture.detectChanges();
+      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(194, 194, 194)');
+    });
+  });
+
+  describe('With 3 digit hex color', () => {
+    it('should set the background color of the day value to rgb(194, 194, 194) provided day value is 3 and hex color is #333', () => {
+      component.dayValue = 3;
+      component.heatmapColorHex = '#333';
+      fixture.detectChanges();
+      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(194, 194, 194)');
+    });
   });
 });

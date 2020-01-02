@@ -1,9 +1,9 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[ycHeatmapColor]'
 })
-export class HeatmapColorDirective implements OnInit {
+export class HeatmapColorDirective implements OnInit, OnChanges {
   @Input() value = 0;
   @Input() maxValue = null;
   @Input() heatmapColor: string;
@@ -14,12 +14,26 @@ export class HeatmapColorDirective implements OnInit {
     this.applyColor();
   }
 
+  ngOnChanges(simpleChange: SimpleChanges) {
+    if (
+      (simpleChange.value && simpleChange.value.currentValue !== simpleChange.value.previousValue) ||
+      (simpleChange.maxValue && simpleChange.maxValue.currentValue !== simpleChange.maxValue.previousValue) ||
+      (simpleChange.heatmapColor && simpleChange.heatmapColor.currentValue !== simpleChange.heatmapColor.previousValue)
+    ) {
+      this.applyColor();
+    }
+  }
+
   /**
    * @author Ahsan Ayaz
    * @desc Applies the heatmap color as the background of the day if company have no color
    */
 
   applyColor() {
+    if (!this.heatmapColor) {
+      return;
+    }
+
     if (!this.value) {  // if the value on the day is undefined, assign 0
       this.value = 0;
     }
@@ -35,7 +49,16 @@ export class HeatmapColorDirective implements OnInit {
     if (value === 0 ) {  // if the value on the day is 0, return the background as transparent
       return 'transparent';
     }
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
+    let result;
+    if (heatmapColor.length === 6 || heatmapColor.length === 7) {
+      result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
+    } else if (heatmapColor.length === 3 || heatmapColor.length === 4) {
+      result = /^#?([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})$/i.exec(heatmapColor);
+      // converting to two digits. I.e. instead of #fff, it'll be #ffffff
+      result[1] += result[1];
+      result[2] += result[2];
+      result[3] += result[3];
+    }
 
     let r = parseInt(result[1], 16);
     let g = parseInt(result[2], 16);
