@@ -65,6 +65,7 @@
             </p>
             <p class="comment">
                             <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                            <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
             </p>
 
 
@@ -100,6 +101,9 @@
                             </li>
                             <li>
                                 <a href="#hexToHsl">hexToHsl</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit">ngOnInit</a>
@@ -279,8 +283,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:32</a></div>
                 </td>
             </tr>
 
@@ -318,8 +322,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:48</a></div>
                 </td>
             </tr>
 
@@ -384,6 +388,76 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(simpleChange: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:17</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>simpleChange</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
                         <b>
@@ -426,12 +500,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, ElementRef, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, ElementRef, OnInit, SimpleChanges, OnChanges } from &#x27;@angular/core&#x27;;
 
 @Directive({
   selector: &#x27;[ycHeatmapColor]&#x27;
 })
-export class HeatmapColorDirective implements OnInit {
+export class HeatmapColorDirective implements OnInit, OnChanges {
   @Input() value &#x3D; 0;
   @Input() maxValue &#x3D; null;
   @Input() heatmapColor: string;
@@ -442,12 +516,26 @@ export class HeatmapColorDirective implements OnInit {
     this.applyColor();
   }
 
+  ngOnChanges(simpleChange: SimpleChanges) {
+    if (
+      (simpleChange.value &amp;&amp; simpleChange.value.currentValue !&#x3D;&#x3D; simpleChange.value.previousValue) ||
+      (simpleChange.maxValue &amp;&amp; simpleChange.maxValue.currentValue !&#x3D;&#x3D; simpleChange.maxValue.previousValue) ||
+      (simpleChange.heatmapColor &amp;&amp; simpleChange.heatmapColor.currentValue !&#x3D;&#x3D; simpleChange.heatmapColor.previousValue)
+    ) {
+      this.applyColor();
+    }
+  }
+
   /**
    * @author Ahsan Ayaz
    * @desc Applies the heatmap color as the background of the day if company have no color
    */
 
   applyColor() {
+    if (!this.heatmapColor) {
+      return;
+    }
+
     if (!this.value) {  // if the value on the day is undefined, assign 0
       this.value &#x3D; 0;
     }
@@ -463,7 +551,16 @@ export class HeatmapColorDirective implements OnInit {
     if (value &#x3D;&#x3D;&#x3D; 0 ) {  // if the value on the day is 0, return the background as transparent
       return &#x27;transparent&#x27;;
     }
-    const result &#x3D; /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
+    let result;
+    if (heatmapColor.length &#x3D;&#x3D;&#x3D; 6 || heatmapColor.length &#x3D;&#x3D;&#x3D; 7) {
+      result &#x3D; /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
+    } else if (heatmapColor.length &#x3D;&#x3D;&#x3D; 3 || heatmapColor.length &#x3D;&#x3D;&#x3D; 4) {
+      result &#x3D; /^#?([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})$/i.exec(heatmapColor);
+      // converting to two digits. I.e. instead of #fff, it&#x27;ll be #ffffff
+      result[1] +&#x3D; result[1];
+      result[2] +&#x3D; result[2];
+      result[3] +&#x3D; result[3];
+    }
 
     let r &#x3D; parseInt(result[1], 16);
     let g &#x3D; parseInt(result[2], 16);

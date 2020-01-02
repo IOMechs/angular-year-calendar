@@ -64,3 +64,8 @@ Then in your HTML, you can use as:
   [selectedDate]="currentDate">
 </yc-year-calendar>
 ```
+
+
+## License
+
+MIT © [IOMechs](https://github.com/IOmechs)
