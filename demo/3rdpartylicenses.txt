@@ -88,6 +88,7 @@ THE SOFTWARE.
 
 
 angular-year-calendar
+MIT
 The MIT License
 
 Copyright (c) 2019 IOMechs
