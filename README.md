@@ -25,6 +25,10 @@ A simple, easily to use Year calendar for your Angular apps.
 
 [https://iomechs.github.io/angular-year-calendar](https://iomechs.github.io/angular-year-calendar)
 
+## Dependencies
+
+The Angular Year Calendar library depends on [date-fns](https://www.npmjs.com/package/date-fns) and [@angular/cdk](https://www.npmjs.com/package/@angular/cdk). If you don't have them installed in your project, you'll have to install them urself.
+
 ## Usage
 
 Install the package in your project's folder by using npm or yarn:

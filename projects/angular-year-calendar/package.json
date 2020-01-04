@@ -1,8 +1,10 @@
 {
   "name": "@iomechs/angular-year-calendar",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "peerDependencies": {
     "@angular/common": "^8.2.11",
-    "@angular/core": "^8.2.11"
+    "@angular/core": "^8.2.11",
+    "date-fns": "^2.5.1",
+    "@angular/cdk": "^8.2.3"
   }
 }
