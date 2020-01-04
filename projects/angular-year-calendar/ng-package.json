@@ -3,5 +3,10 @@
   "dest": "../../dist/angular-year-calendar",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "date-fns",
+    "cdk"
+  ]
 }
