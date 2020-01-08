@@ -103,6 +103,7 @@
                                         <a href="#headerTemplate">headerTemplate</a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#heatmapColor">heatmapColor</a>
                                 </li>
                                 <li>
@@ -370,6 +371,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -670,7 +676,7 @@ export interface YCHeaderButton {
 export interface YCConfig {
   // the theme colors are basically color ranges according to hsl color constants. The &#x60;H&#x60; value to be exact.
   // See information here https://www.w3schools.com/colors/colors_hsl.asp
-  heatmapColor: string;
+  heatmapColor?: string;
   data: Array&lt;YCDataItem&gt;;
   nextBtn?: YCHeaderButton;
   prevBtn?: YCHeaderButton;
