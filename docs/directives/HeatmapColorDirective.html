@@ -100,7 +100,7 @@
                                 <a href="#applyColor">applyColor</a>
                             </li>
                             <li>
-                                <a href="#hexToHsl">hexToHsl</a>
+                                <a href="#getPercentageColor">getPercentageColor</a>
                             </li>
                             <li>
                                 <a href="#ngOnChanges">ngOnChanges</a>
@@ -304,26 +304,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="hexToHsl"></a>
+                    <a name="getPercentageColor"></a>
                     <span class="name">
                         <b>
-                            hexToHsl
+                            getPercentageColor
                         </b>
-                        <a href="#hexToHsl"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getPercentageColor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>hexToHsl(heatmapColor, value, maxValue)</code>
+<code>getPercentageColor(heatmapColor, value, maxValue)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/directives/heatmap-color.directive.ts:53</a></div>
                 </td>
             </tr>
 
@@ -374,7 +374,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -501,7 +501,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, ElementRef, OnInit, SimpleChanges, OnChanges } from &#x27;@angular/core&#x27;;
-
+import tinyColor from &#x27;tinycolor2&#x27;;
 @Directive({
   selector: &#x27;[ycHeatmapColor]&#x27;
 })
@@ -539,7 +539,12 @@ export class HeatmapColorDirective implements OnInit, OnChanges {
     if (!this.value) {  // if the value on the day is undefined, assign 0
       this.value &#x3D; 0;
     }
-    this.el.nativeElement.style.backgroundColor &#x3D; this.hexToHsl(this.heatmapColor, this.value, this.maxValue);
+    const percentColor &#x3D; this.getPercentageColor(this.heatmapColor, this.value, this.maxValue);
+    this.el.nativeElement.style.backgroundColor &#x3D; percentColor;
+
+    if (percentColor !&#x3D;&#x3D; &#x27;transparent&#x27; &amp;&amp; tinyColor(percentColor).isDark()) {
+      this.el.nativeElement.style.color &#x3D; &#x27;#fff&#x27;;
+    }
   }
 
   /**
@@ -547,58 +552,22 @@ export class HeatmapColorDirective implements OnInit, OnChanges {
    * @desc Applies the heatmap color as the background color
    */
 
-  hexToHsl(heatmapColor, value, maxValue) {
+  getPercentageColor(heatmapColor, value, maxValue) {
     if (value &#x3D;&#x3D;&#x3D; 0 ) {  // if the value on the day is 0, return the background as transparent
       return &#x27;transparent&#x27;;
     }
-    let result;
-    if (heatmapColor.length &#x3D;&#x3D;&#x3D; 6 || heatmapColor.length &#x3D;&#x3D;&#x3D; 7) {
-      result &#x3D; /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(heatmapColor);
-    } else if (heatmapColor.length &#x3D;&#x3D;&#x3D; 3 || heatmapColor.length &#x3D;&#x3D;&#x3D; 4) {
-      result &#x3D; /^#?([a-f\d]{1})([a-f\d]{1})([a-f\d]{1})$/i.exec(heatmapColor);
-      // converting to two digits. I.e. instead of #fff, it&#x27;ll be #ffffff
-      result[1] +&#x3D; result[1];
-      result[2] +&#x3D; result[2];
-      result[3] +&#x3D; result[3];
-    }
-
-    let r &#x3D; parseInt(result[1], 16);
-    let g &#x3D; parseInt(result[2], 16);
-    let b &#x3D; parseInt(result[3], 16);
-
-    r /&#x3D; 255, g /&#x3D; 255, b /&#x3D; 255;
-    const max &#x3D; Math.max(r, g, b);
-    const min &#x3D; Math.min(r, g, b);
-    let h &#x3D; (max + min) / 2;
-    let s &#x3D; (max + min) / 2;
-    let l &#x3D; (max + min) / 2;
-
-    if (max &#x3D;&#x3D;&#x3D; min) {
-        h &#x3D; s &#x3D; 0; // achromatic
-    } else {
-        const d &#x3D; max - min;
-        s &#x3D; l &gt; 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-            case r: h &#x3D; (g - b) / d + (g &lt; b ? 6 : 0); break;
-            case g: h &#x3D; (b - r) / d + 2; break;
-            case b: h &#x3D; (r - g) / d + 4; break;
-        }
-        h /&#x3D; 6;
-    }
-
-    s &#x3D; s * 100;
-    s &#x3D; Math.round(s);
-    l &#x3D; l * 100;
-    h &#x3D; Math.round(360 * h);
-
-    // Calculate the color frequency of l value
+    const color &#x3D; tinyColor(heatmapColor);
+    const colorComponents &#x3D; color.toHsl();
     maxValue &#x3D; maxValue ? maxValue : 0;
-    const perc &#x3D; ((value / maxValue) * (100 - l));
-    l &#x3D; 100 - perc;
-    l &#x3D; Math.round(l);
+    const perc &#x3D; ((value / maxValue) * (100 - colorComponents.l));
+    colorComponents.l &#x3D; 100 - perc;
+    colorComponents.l &#x3D; Math.round(colorComponents.l);
 
-    // Return a CSS HSL string
-    return &#x27;hsl(&#x27; + h + &#x27;, &#x27; + s + &#x27;%, &#x27; + l + &#x27;%)&#x27;;
+    if (colorComponents.l &lt; 0) {  // the max value is 100%
+      colorComponents.l &#x3D; 0;
+    }
+
+    return tinyColor(colorComponents).toHexString();
   }
 }
 </code></pre>
