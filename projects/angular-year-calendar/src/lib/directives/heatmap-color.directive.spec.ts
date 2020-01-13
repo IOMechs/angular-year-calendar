@@ -38,20 +38,20 @@ describe('HeatmapColorDirective', () => {
   });
 
   describe('With 6 digit hex color', () => {
-    it('should set the background color of the day value to rgb(194, 194, 194) provided day value is 3 and hex color is #333333', () => {
+    it('should set the background color of the day value to rgb(179, 179, 179) provided day value is 3 and hex color is #333333', () => {
       component.dayValue = 3;
       component.heatmapColorHex = '#333333';
       fixture.detectChanges();
-      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(194, 194, 194)');
+      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(179, 179, 179)');
     });
   });
 
   describe('With 3 digit hex color', () => {
-    it('should set the background color of the day value to rgb(194, 194, 194) provided day value is 3 and hex color is #333', () => {
+    it('should set the background color of the day value to rgb(179, 179, 179) provided day value is 3 and hex color is #333', () => {
       component.dayValue = 3;
       component.heatmapColorHex = '#333';
       fixture.detectChanges();
-      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(194, 194, 194)');
+      expect(inputEl.nativeElement.style.backgroundColor).toBe('rgb(179, 179, 179)');
     });
   });
 });

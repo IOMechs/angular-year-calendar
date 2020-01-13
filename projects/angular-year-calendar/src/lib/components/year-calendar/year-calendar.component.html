@@ -31,7 +31,7 @@
               *ngFor="let day of week;"
               ycHeatmapColor
               [value]="day?.value"
-              [maxValue]="ycConfig.maxValue"
+              [maxValue]="maxValueInYear"
               [heatmapColor]="ycConfig.heatmapColor"
               [ngClass]="{'year-calendar__body__month__inner__week__day--today': (!!day && !!day.isToday), 'year-calendar__body__month__inner__week__day--has-value':  (!!day?.value)}"
               class="year-calendar__body__month__inner__week__day {{ycConfig?.dayClass}}"
