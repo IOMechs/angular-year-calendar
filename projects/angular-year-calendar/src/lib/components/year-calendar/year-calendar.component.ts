@@ -22,6 +22,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   @ViewChild('defaultHeaderTemplate', {static: true}) defaultHeaderTemplate: TemplateRef<any>;
   year = new Date().getFullYear();
   yearData = [];
+  maxValueInYear: number;
   constructor(
     private ycService: YearCalendarService
   ) { }
@@ -135,7 +136,9 @@ export class YearCalendarComponent implements OnInit, OnChanges {
       }
     }
     if (maxValueInYear > this.ycConfig.maxValue) {
-      this.ycConfig.maxValue = maxValueInYear;
+      this.maxValueInYear = maxValueInYear;
+    } else {
+      this.maxValueInYear = Number(this.ycConfig.maxValue);
     }
     return daysOfWeeks.filter(weekData => {
       return weekData.length !== 0;
