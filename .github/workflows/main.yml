@@ -32,8 +32,8 @@ jobs:
       run: npm run test:lib
     - name: Docs
       run: npm run docs:build
-    - name: Copy Demo
-      run: npm run copy:demo:ci
+    - name: Copy Files
+      run: npm run copy:demo:ci && npm run copy:readme && npm run copy:changelog && npm run copy:license
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:

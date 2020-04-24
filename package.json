@@ -16,6 +16,7 @@
     "lint": "ng lint",
     "copy:readme": "cp ./README.md projects/angular-year-calendar/",
     "copy:license": "cp ./LICENSE projects/angular-year-calendar/",
+    "copy:changelog": "cp ./CHANGELOG.md projects/angular-year-calendar/",
     "copy:demo:ci": "cp -R dist/demo ./docs/demo",
     "pre-release": "npm run lint && npm run copy:readme && npm run copy:license && npm run build:lib && npm run docs:build && npm run changelog",
     "publish:lib": "npm publish dist/angular-year-calendar --access public",
@@ -24,6 +25,18 @@
     "e2e": "ng e2e",
     "deploy": "ng deploy demo --base-href=/angular-year-calendar/"
   },
+  "repository": "https://github.com/iomechs/angular-year-calendar",
+  "keywords": [
+    "iomechs",
+    "angular",
+    "calendar",
+    "year calendar",
+    "year-calendar",
+    "angular calendar",
+    "angular9 calendar",
+    "ng calendar",
+    "ng-calendar"
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {
