@@ -17,8 +17,9 @@
     "copy:readme": "cp ./README.md projects/angular-year-calendar/",
     "copy:license": "cp ./LICENSE projects/angular-year-calendar/",
     "copy:demo:ci": "cp -R dist/demo ./docs/demo",
-    "pre-release": "npm run lint && npm run copy:readme && npm run copy:license && npm run build:lib && npm run test:lib && npm run docs:build",
+    "pre-release": "npm run lint && npm run copy:readme && npm run copy:license && npm run build:lib && npm run docs:build && npm run changelog",
     "publish:lib": "npm publish dist/angular-year-calendar --access public",
+    "changelog": "./node_modules/.bin/conventional-changelog -p angular -k projects/angular-year-calendar/package.json -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release": "npm run pre-release && npm run publish:lib",
     "e2e": "ng e2e",
     "deploy": "ng deploy demo --base-href=/angular-year-calendar/"
@@ -36,6 +37,7 @@
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
     "angular-cli-ghpages": "^0.6.0",
+    "conventional-changelog-cli": "^2.0.31",
     "date-fns": "^2.5.1",
     "rxjs": "~6.4.0",
     "tinycolor2": "^1.4.1",

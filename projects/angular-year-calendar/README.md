@@ -6,7 +6,7 @@
 
 <a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/v/@iomechs/angular-year-calendar.svg" alt="npm version" ></a>
 <a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/github/stars/IOMechs/angular-year-calendar.svg?style=social&label=Star&style=flat-square" alt="github stars" ></a>
-<a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/l/@iomechs/angular-year-calendar.svg?style=flat-square" alt="license" ></a>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <a href="https://www.npmjs.com/package/@iomechs/angular-year-calendar"><img src="https://img.shields.io/npm/dt/@iomechs/angular-year-calendar.svg?style=flat-square" alt="npm downloads total" ></a>
 <a href="https://www.npmjs.com/package/ngx-device-detector"><img src="https://img.shields.io/npm/dm/@iomechs/angular-year-calendar.svg" alt="npm downloads/month" ></a>
