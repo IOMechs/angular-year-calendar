@@ -35,6 +35,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </a>
                         </li>
                         <li class="link">
+                            <a href="changelog.html"  data-type="chapter-link">
+                                <span class="icon ion-ios-paper"></span>CHANGELOG
+                            </a>
+                        </li>
+                        <li class="link">
                             <a href="license.html"  data-type="chapter-link">
                                 <span class="icon ion-ios-paper"></span>LICENSE
                             </a>
@@ -60,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/YearCalendarModule.html" data-type="entity-link">YearCalendarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' : 'data-target="#xs-components-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                            'data-target="#components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' :
-                                            'id="xs-components-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
+                                            'id="xs-components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                             <li class="link">
                                                 <a href="components/YearCalendarComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">YearCalendarComponent</a>
@@ -75,13 +80,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' : 'data-target="#xs-directives-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                        'data-target="#directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' :
-                                        'id="xs-directives-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
+                                        'id="xs-directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                         <li class="link">
                                             <a href="directives/HeatmapColorDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">HeatmapColorDirective</a>
@@ -90,13 +95,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' : 'data-target="#xs-pipes-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                            'data-target="#pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' :
-                                            'id="xs-pipes-links-module-YearCalendarModule-11dcd6d274b4909fa5c6299247c1f617"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
+                                            'id="xs-pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
                                             <li class="link">
                                                 <a href="pipes/WeekNumberPipe.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">WeekNumberPipe</a>

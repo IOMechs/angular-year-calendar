@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build angular-year-calendar",
-    "build:ci": "ng build --configuration production --base-href=/angular-year-calendar/demo/",
+    "build:ci": "ng build demo --configuration production --base-href=/angular-year-calendar/demo/",
     "docs": "npm run docs:build",
     "docs:build": "compodoc -p --tsconfig ./projects/angular-year-calendar/tsconfig.lib.json -n @iomechs/angular-year-calendar -d docs --hideGenerator --theme material",
     "docs:serve": "npm run docs:build -- -s",
@@ -21,7 +21,7 @@
     "pre-release": "npm run lint && npm run copy:readme && npm run copy:license && npm run build:lib && npm run docs:build && npm run changelog",
     "publish:lib": "npm publish dist/angular-year-calendar --access public",
     "changelog": "./node_modules/.bin/conventional-changelog -p angular -k projects/angular-year-calendar/package.json -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "release": "npm run pre-release && npm run publish:lib",
+    "release": "npm run publish:lib",
     "e2e": "ng e2e",
     "deploy": "ng deploy demo --base-href=/angular-year-calendar/"
   },
@@ -60,6 +60,11 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.2",
     "@angular-devkit/build-ng-packagr": "^0.1002.4",
+    "@angular-eslint/builder": "15.1.0",
+    "@angular-eslint/eslint-plugin": "15.1.0",
+    "@angular-eslint/eslint-plugin-template": "15.1.0",
+    "@angular-eslint/schematics": "15.1.0",
+    "@angular-eslint/template-parser": "15.1.0",
     "@angular/cli": "^15.0.2",
     "@angular/compiler-cli": "^15.0.2",
     "@angular/language-service": "^15.0.2",
@@ -67,7 +72,9 @@
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "codelyzer": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "5.44.0",
+    "@typescript-eslint/parser": "5.44.0",
+    "eslint": "^8.28.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.1",
@@ -79,7 +86,6 @@
     "ng-packagr": "^15.0.1",
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
-    "tslint": "~6.1.0",
     "typescript": "~4.8.4"
   }
 }

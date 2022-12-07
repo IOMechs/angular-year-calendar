@@ -4,10 +4,5 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "whitelistedNonPeerDependencies": [
-    "tslib",
-    "date-fns",
-    "cdk",
-    "tinyColor2"
-  ]
+  "allowedNonPeerDependencies": ["tslib", "date-fns", "cdk", "tinyColor2"]
 }

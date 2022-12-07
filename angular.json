@@ -22,19 +22,28 @@
           "options": {
             "tsConfig": "projects/angular-year-calendar/tsconfig.lib.json",
             "project": "projects/angular-year-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular-year-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/angular-year-calendar/src/test.ts",
             "tsConfig": "projects/angular-year-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/angular-year-calendar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-year-calendar/**/*.ts",
+              "projects/angular-year-calendar/**/*.html"
+            ]
           }
         }
       }
@@ -153,8 +162,24 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {}
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo/**/*.ts",
+              "projects/demo/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics",
+      "@angular-eslint/schematics",
+      "@angular-eslint/schematics"
+    ]
   }
 }
