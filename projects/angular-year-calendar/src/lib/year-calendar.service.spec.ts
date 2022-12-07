@@ -6,7 +6,7 @@ describe('CalendarHeatmapService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: YearCalendarService = TestBed.get(YearCalendarService);
+    const service: YearCalendarService = TestBed.inject(YearCalendarService);
     expect(service).toBeTruthy();
   });
 });
