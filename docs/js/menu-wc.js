@@ -1,6 +1,5 @@
 'use strict';
 
-
 customElements.define('compodoc-menu', class extends HTMLElement {
     constructor() {
         super();
@@ -49,6 +48,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <span class="icon ion-ios-list"></span>Dependencies
                                     </a>
                                 </li>
+                                <li class="link">
+                                    <a href="properties.html" data-type="chapter-link">
+                                        <span class="icon ion-ios-apps"></span>Properties
+                                    </a>
+                                </li>
                     </ul>
                 </li>
                     <li class="chapter modules">
@@ -62,49 +66,46 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/YearCalendarModule.html" data-type="entity-link">YearCalendarModule</a>
+                                <a href="modules/YearCalendarModule.html" data-type="entity-link" >YearCalendarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                            'data-target="#components-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' : 'data-target="#xs-components-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
-                                            'id="xs-components-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' :
+                                            'id="xs-components-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                             <li class="link">
-                                                <a href="components/YearCalendarComponent.html"
-                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">YearCalendarComponent</a>
+                                                <a href="components/YearCalendarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >YearCalendarComponent</a>
                                             </li>
                                         </ul>
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                        'data-target="#directives-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' : 'data-target="#xs-directives-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
-                                        'id="xs-directives-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' :
+                                        'id="xs-directives-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                         <li class="link">
-                                            <a href="directives/HeatmapColorDirective.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">HeatmapColorDirective</a>
+                                            <a href="directives/HeatmapColorDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >HeatmapColorDirective</a>
                                         </li>
                                     </ul>
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' : 'data-target="#xs-pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                            'data-target="#pipes-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' : 'data-target="#xs-pipes-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' :
-                                            'id="xs-pipes-links-module-YearCalendarModule-f967ad373c021594ab110c4eeab7de57"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' :
+                                            'id="xs-pipes-links-module-YearCalendarModule-fcbe343b9512028e26638f274d1f00dcb3550c0fd49e4fef2f2919d25cb0fc9a0fb1dd0c315f85321473c27fc221104a61a63690953aa0ca76e89ee5aedb24da"' }>
                                             <li class="link">
-                                                <a href="pipes/WeekNumberPipe.html"
-                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">WeekNumberPipe</a>
+                                                <a href="pipes/WeekNumberPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >WeekNumberPipe</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -120,7 +121,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
-                                    <a href="injectables/YearCalendarService.html" data-type="entity-link">YearCalendarService</a>
+                                    <a href="injectables/YearCalendarService.html" data-type="entity-link" >YearCalendarService</a>
                                 </li>
                             </ul>
                         </li>
@@ -133,16 +134,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/YCConfig.html" data-type="entity-link">YCConfig</a>
+                                <a href="interfaces/YCConfig.html" data-type="entity-link" >YCConfig</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/YCDataItem.html" data-type="entity-link">YCDataItem</a>
+                                <a href="interfaces/YCDataItem.html" data-type="entity-link" >YCDataItem</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/YCDayItem.html" data-type="entity-link">YCDayItem</a>
+                                <a href="interfaces/YCDayItem.html" data-type="entity-link" >YCDayItem</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/YCHeaderButton.html" data-type="entity-link">YCHeaderButton</a>
+                                <a href="interfaces/YCHeaderButton.html" data-type="entity-link" >YCHeaderButton</a>
                             </li>
                         </ul>
                     </li>
