@@ -252,8 +252,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.module.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/year-calendar.module.ts:15</a></div>
                 </td>
             </tr>
 
@@ -262,7 +262,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://angular.io/api/core/ModuleWithProviders" target="_blank" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>    <code>ModuleWithProviders&lt;YearCalendarModule&gt;</code>
 
                     </div>
                 </td>
@@ -274,38 +274,24 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { YearCalendarComponent } from &#x27;./components/year-calendar/year-calendar.component&#x27;;
-import { ModuleWithProviders } from &#x27;@angular/compiler/src/core&#x27;;
-import { YearCalendarService } from &#x27;./year-calendar.service&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
-import { HeatmapColorDirective } from &#x27;./directives/heatmap-color.directive&#x27;;
-import { OverlayModule } from &#x27;@angular/cdk/overlay&#x27;;
-import { WeekNumberPipe } from &#x27;./pipes/week-number/week-number.pipe&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ModuleWithProviders, NgModule } from &quot;@angular/core&quot;;
+import { YearCalendarComponent } from &quot;./components/year-calendar/year-calendar.component&quot;;
+import { YearCalendarService } from &quot;./year-calendar.service&quot;;
+import { CommonModule } from &quot;@angular/common&quot;;
+import { HeatmapColorDirective } from &quot;./directives/heatmap-color.directive&quot;;
+import { OverlayModule } from &quot;@angular/cdk/overlay&quot;;
+import { WeekNumberPipe } from &quot;./pipes/week-number/week-number.pipe&quot;;
 
 @NgModule({
-  declarations: [
-    YearCalendarComponent,
-    HeatmapColorDirective,
-    WeekNumberPipe
-  ],
-  imports: [
-    CommonModule,
-    OverlayModule
-  ],
-  exports: [
-    YearCalendarComponent,
-    HeatmapColorDirective,
-    WeekNumberPipe
-  ]
+  declarations: [YearCalendarComponent, HeatmapColorDirective, WeekNumberPipe],
+  imports: [CommonModule, OverlayModule],
+  exports: [YearCalendarComponent, HeatmapColorDirective, WeekNumberPipe],
 })
 export class YearCalendarModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders&lt;YearCalendarModule&gt; {
     return {
       ngModule: YearCalendarModule,
-      providers: [
-        YearCalendarService
-      ]
+      providers: [YearCalendarService],
     };
   }
 }
