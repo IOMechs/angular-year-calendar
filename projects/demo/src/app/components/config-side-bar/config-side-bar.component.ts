@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
@@ -10,11 +10,11 @@ import { takeWhile } from 'rxjs/operators';
 export class ConfigSideBarComponent implements OnInit, OnDestroy {
   @Input() width = 400;
   isOpen: boolean;
-  configForm: FormGroup;
+  configForm: UntypedFormGroup;
   @Output() valueChanged = new EventEmitter();
   @Output() toggled = new EventEmitter();
   componentAlive: boolean;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
   }
 
   initForm() {
