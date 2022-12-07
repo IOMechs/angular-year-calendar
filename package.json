@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build angular-year-calendar",
-    "build:ci": "ng build --prod --base-href=/angular-year-calendar/demo/",
+    "build:ci": "ng build --configuration production --base-href=/angular-year-calendar/demo/",
     "docs": "npm run docs:build",
     "docs:build": "compodoc -p --tsconfig ./projects/angular-year-calendar/tsconfig.lib.json -n @iomechs/angular-year-calendar -d docs --hideGenerator --theme material",
     "docs:serve": "npm run docs:build -- -s",
