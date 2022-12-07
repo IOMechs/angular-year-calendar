@@ -1,6 +1,9 @@
 {
   "name": "@iomechs/angular-year-calendar",
   "version": "0.1.8",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
     "@angular/common": "^8.2.11",
     "@angular/core": "^8.2.11",
