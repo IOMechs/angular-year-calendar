@@ -10,7 +10,7 @@
       "prefix": "yc",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         },
         "@ngrx/schematics:component": {
           "styleext": "scss"
