@@ -58,7 +58,7 @@ export class WeekNumberPipe implements PipeTransform {
 
     // find out the distance from the first week's first day
     const roundFigure = ((currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) / 86400000);
-    result = (roundFigure % 7 === 0) ? roundFigure / 7 : 1 + Math.round(roundFigure / 7);
+    result = (roundFigure % 7 === 0) ? roundFigure / 7 + 1 : 1 + Math.round(roundFigure / 7);
     if (result <= 0) {
       result = weeksInYear + result;
     }
