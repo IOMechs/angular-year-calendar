@@ -1,0 +1,34 @@
+name: CI
+permissions:
+  contents: write
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    # Machine environment:
+    # https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions#ubuntu-1804-lts
+    # We specify the Node.js version manually below, and use versioned Chrome from Puppeteer.
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 16.15.0
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.15.0
+    - name: Install dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Build Demo
+      run: npm run build:ci
+    - name: Test
+      run: npm run test:lib
+    - name: Docs
+      run: npm run docs:build
+    - name: Copy Files
+      run: npm run copy:demo:ci && npm run copy:readme && npm run copy:changelog && npm run copy:license
