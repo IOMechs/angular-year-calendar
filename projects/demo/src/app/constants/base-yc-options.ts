@@ -23,5 +23,4 @@ export const BaseYCOptions: YCConfig = {
   weekNumbersColor: '#778CA2',
   dayClass: 'year-calendar-day',
   maxValue: 10, // let the component calculate the max value from all values,
-  periodWeekNumber: true,
 };
