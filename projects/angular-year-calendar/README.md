@@ -72,4 +72,4 @@ Then in your HTML, you can use as:
 
 ## License
 
-MIT © [IOMechs](https://github.com/IOmechs)
+MIT © [IOMechs](https://iomechs.com)
