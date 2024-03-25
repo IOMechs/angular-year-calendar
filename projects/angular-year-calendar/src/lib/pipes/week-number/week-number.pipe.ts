@@ -71,6 +71,30 @@ export class WeekNumberPipe implements PipeTransform {
       }
     }
 
+    if (ycConfig.periodWeekNumber) {
+      date.setHours(12, 0, 0, 0);
+      const diff = (date.getTime() - firstWeekFirstDate.getTime()) / 86400000;
+
+      // calculating period week number from range [1-4] using the result calculated above
+      let week = result === 53 ? 1 : result;
+      if (diff % 7 !== 0 && diff % 7 < 4) {
+        week += 1;
+      }
+
+      const periodNumber = Math.ceil(week / 4);
+      const weekNumber = week % 4 || 4;
+
+      // calculation for the adjustment week if have multiple of 7 days remaining from this week start and next year start date
+      const dayDiff = (nextYearFirstDate.getTime() - date.getTime()) / 86400000;
+      if (dayDiff % 7 === 0 && dayDiff <= 35) {
+        const adjustmentWeek = 'P:13 - W:5/5';
+        // if period is 14 from above means its the adjustment week 
+        return periodNumber === 14 ? adjustmentWeek : `P:${periodNumber}-W:${weekNumber}/5`;
+      }
+
+      return `P:${periodNumber === 14 ? 1 : periodNumber}-W:${weekNumber}/4`;
+    }
+
     return result;
   }
 

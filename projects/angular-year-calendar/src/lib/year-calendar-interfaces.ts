@@ -36,6 +36,7 @@ export interface YCConfig {
   weekNumbersColor?: string;
   dayClass?: string;
   maxValue?: number;
+  periodWeekNumber?: boolean;
 }
 
 export interface YCDayItem {
