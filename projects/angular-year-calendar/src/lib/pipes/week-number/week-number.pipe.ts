@@ -3,12 +3,10 @@ import {
   differenceInCalendarDays,
   subDays,
   addWeeks,
-  addDays,
   addYears,
   subYears,
   differenceInWeeks,
 } from "date-fns";
-import { DEFAULT_WEEK } from "../../constants/default-config";
 import { YCConfig } from "../../year-calendar-interfaces";
 
 @Pipe({
@@ -17,7 +15,7 @@ import { YCConfig } from "../../year-calendar-interfaces";
 export class WeekNumberPipe implements PipeTransform {
   transform(date: Date, ycConfig: YCConfig, year): any {
     const dateClone = new Date(date);
-    const oneDay = 86400000; // milliseconds in a day
+    const millisecondsInADay = 86400000;
 
     const { firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate } = ycConfig;
     let result;
@@ -87,7 +85,8 @@ export class WeekNumberPipe implements PipeTransform {
 
     // find out the distance from the first week's first day
     const roundFigure =
-      (currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) / oneDay;
+      (currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) /
+      millisecondsInADay;
     result =
       roundFigure % 7 === 0
         ? roundFigure / 7 + 1
@@ -112,7 +111,7 @@ export class WeekNumberPipe implements PipeTransform {
     if (ycConfig.periodWeekNumber) {
       date.setHours(12, 0, 0, 0);
       const currentYearStartDiff =
-        (date.getTime() - firstWeekFirstDate.getTime()) / oneDay;
+        (date.getTime() - firstWeekFirstDate.getTime()) / millisecondsInADay;
 
       // calculating period week number from range [1-4] using the week number calculated above
       let week = result === 53 ? 1 : result;
@@ -126,7 +125,7 @@ export class WeekNumberPipe implements PipeTransform {
       const weekNumber = week % 4 || 4;
 
       const nextYearStartDiff =
-        (nextYearFirstDate.getTime() - date.getTime()) / oneDay;
+        (nextYearFirstDate.getTime() - date.getTime()) / millisecondsInADay;
 
       // calculation for the "Adjustment Week" if days remaining are in multiple of 7
       if (nextYearStartDiff % 7 === 0 && nextYearStartDiff <= 35) {
