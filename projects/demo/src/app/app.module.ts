@@ -6,8 +6,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ExampleSectionComponent } from "./components/example-section/example-section.component";
 import { ConfigSideBarComponent } from "./components/config-side-bar/config-side-bar.component";
-import { YearCalendarModule } from "../../../angular-year-calendar/src/public-api";
-// import { YearCalendarModule } from '@iomechs/angular-year-calendar';
+import { YearCalendarModule } from "@iomechs/angular-year-calendar";
+// import { YearCalendarModule } from "../../../angular-year-calendar/src/public-api";
 
 @NgModule({
   declarations: [AppComponent, ExampleSectionComponent, ConfigSideBarComponent],
