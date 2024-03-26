@@ -106,8 +106,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:146</a></div>
                 </td>
             </tr>
 
@@ -180,8 +180,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:157</a></div>
                 </td>
             </tr>
 
@@ -263,8 +263,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:150</a></div>
                 </td>
             </tr>
 
@@ -344,8 +344,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:172</a></div>
                 </td>
             </tr>
 
@@ -418,8 +418,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:16</a></div>
                 </td>
             </tr>
 
@@ -496,22 +496,35 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
-import { differenceInCalendarDays, subDays, addWeeks, addDays, addYears, subYears, differenceInWeeks } from &#x27;date-fns&#x27;;
-import { DEFAULT_WEEK } from &#x27;../../constants/default-config&#x27;;
-import { YCConfig } from &#x27;../../year-calendar-interfaces&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
+import {
+  differenceInCalendarDays,
+  subDays,
+  addWeeks,
+  addYears,
+  subYears,
+  differenceInWeeks,
+} from &quot;date-fns&quot;;
+import { YCConfig } from &quot;../../year-calendar-interfaces&quot;;
 
 @Pipe({
-  name: &#x27;weekNumber&#x27;
+  name: &quot;weekNumber&quot;,
 })
 export class WeekNumberPipe implements PipeTransform {
-
   transform(date: Date, ycConfig: YCConfig, year): any {
     const dateClone &#x3D; new Date(date);
-    const {firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate} &#x3D; ycConfig;
+    const millisecondsInADay &#x3D; 86400000;
+
+    const { firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate } &#x3D; ycConfig;
     let result;
-    if (firstWeekMonth &#x3D;&#x3D;&#x3D; undefined || (firstWeekMonth.month &#x3D;&#x3D;&#x3D; undefined || firstWeekMonth.week &#x3D;&#x3D;&#x3D; undefined)) {
-      throw new Error(&#x27;firstWeekMonth data is required for the weekNumber pipe&#x27;);
+    if (
+      firstWeekMonth &#x3D;&#x3D;&#x3D; undefined ||
+      firstWeekMonth.month &#x3D;&#x3D;&#x3D; undefined ||
+      firstWeekMonth.week &#x3D;&#x3D;&#x3D; undefined
+    ) {
+      throw new Error(
+        &quot;firstWeekMonth data is required for the weekNumber pipe&quot;
+      );
     }
 
     /**
@@ -521,16 +534,28 @@ export class WeekNumberPipe implements PipeTransform {
      * Setting 12h makes sure the week numbers work for the entire app for all timezones
      */
     dateClone.setHours(12, 0, 0, 0);
-    let {
-      firstWeekFirstDate
-    } &#x3D; this.getFirstWeekFirstDate(dateClone.getFullYear(), firstWeekMonth, weekStartsOn);
+    let { firstWeekFirstDate } &#x3D; this.getFirstWeekFirstDate(
+      dateClone.getFullYear(),
+      firstWeekMonth,
+      weekStartsOn
+    );
     let dateDay;
     let currentWeekStartDate;
     if (forceWeek) {
-      if (!forceWeekDate || isNaN(forceWeekDate.month) || isNaN(forceWeekDate.date)) {
-        throw new Error(&#x27;forceWeekDate is required when forceWeek is set to true&#x27;);
+      if (
+        !forceWeekDate ||
+        isNaN(forceWeekDate.month) ||
+        isNaN(forceWeekDate.date)
+      ) {
+        throw new Error(
+          &quot;forceWeekDate is required when forceWeek is set to true&quot;
+        );
       }
-      firstWeekFirstDate &#x3D; new Date(year, forceWeekDate.month, forceWeekDate.date);
+      firstWeekFirstDate &#x3D; new Date(
+        year,
+        forceWeekDate.month,
+        forceWeekDate.date
+      );
       const customDateDay &#x3D; this.getDayInView(firstWeekFirstDate, weekStartsOn);
       firstWeekFirstDate &#x3D; subDays(firstWeekFirstDate, customDateDay);
     } else {
@@ -545,7 +570,10 @@ export class WeekNumberPipe implements PipeTransform {
     let weeksInYear;
     if (currentWeekStartDate.getTime() &lt; firstWeekFirstDate.getTime()) {
       previousYearFirstDate &#x3D; subYears(firstWeekFirstDate, 1);
-      weeksInYear &#x3D; differenceInWeeks(firstWeekFirstDate, previousYearFirstDate);
+      weeksInYear &#x3D; differenceInWeeks(
+        firstWeekFirstDate,
+        previousYearFirstDate
+      );
       nextYearFirstDate &#x3D; firstWeekFirstDate;
       firstWeekFirstDate &#x3D; previousYearFirstDate;
     } else {
@@ -553,20 +581,61 @@ export class WeekNumberPipe implements PipeTransform {
       weeksInYear &#x3D; differenceInWeeks(nextYearFirstDate, firstWeekFirstDate);
     }
 
-
     // find out the distance from the first week&#x27;s first day
-    const roundFigure &#x3D; ((currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) / 86400000);
-    result &#x3D; (roundFigure % 7 &#x3D;&#x3D;&#x3D; 0) ? roundFigure / 7 + 1 : 1 + Math.round(roundFigure / 7);
+    const roundFigure &#x3D;
+      (currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) /
+      millisecondsInADay;
+    result &#x3D;
+      roundFigure % 7 &#x3D;&#x3D;&#x3D; 0
+        ? roundFigure / 7 + 1
+        : 1 + Math.round(roundFigure / 7);
     if (result &lt;&#x3D; 0) {
       result &#x3D; weeksInYear + result;
     }
 
-    const datesDiff &#x3D; Math.abs(differenceInCalendarDays(nextYearFirstDate, currentWeekStartDate));
+    const datesDiff &#x3D; Math.abs(
+      differenceInCalendarDays(nextYearFirstDate, currentWeekStartDate)
+    );
     if (datesDiff &lt;&#x3D; 6) {
       dateDay &#x3D; Math.abs(this.getDayInView(nextYearFirstDate, weekStartsOn));
-      if (dateDay &lt;&#x3D; 3 &amp;&amp; ((currentWeekStartDate.getMonth()) % 11) &#x3D;&#x3D;&#x3D; firstWeekMonth.month) {
+      if (
+        dateDay &lt;&#x3D; 3 &amp;&amp;
+        currentWeekStartDate.getMonth() % 11 &#x3D;&#x3D;&#x3D; firstWeekMonth.month
+      ) {
         result &#x3D; 1;
       }
+    }
+
+    if (ycConfig.periodWeekNumber) {
+      date.setHours(12, 0, 0, 0);
+      const currentYearStartDiff &#x3D;
+        (date.getTime() - firstWeekFirstDate.getTime()) / millisecondsInADay;
+
+      // calculating period week number from range [1-4] using the week number calculated above
+      let week &#x3D; result &#x3D;&#x3D;&#x3D; 53 ? 1 : result;
+
+      // Adjusting week number if year start day and week start are diff and week have less than 4 days
+      if (currentYearStartDiff % 7 !&#x3D;&#x3D; 0 &amp;&amp; currentYearStartDiff % 7 &lt; 4) {
+        week +&#x3D; 1;
+      }
+
+      const periodNumber &#x3D; Math.ceil(week / 4);
+      const weekNumber &#x3D; week % 4 || 4;
+
+      const nextYearStartDiff &#x3D;
+        (nextYearFirstDate.getTime() - date.getTime()) / millisecondsInADay;
+
+      // calculation for the &quot;Adjustment Week&quot; if days remaining are in multiple of 7
+      if (nextYearStartDiff % 7 &#x3D;&#x3D;&#x3D; 0 &amp;&amp; nextYearStartDiff &lt;&#x3D; 35) {
+        const adjustmentWeek &#x3D; &quot;P:13 - W:5/5&quot;;
+
+        // if period is 14 from above means its the adjustment week
+        return periodNumber &#x3D;&#x3D;&#x3D; 14
+          ? adjustmentWeek
+          : &#x60;P:${periodNumber}-W:${weekNumber}/5&#x60;;
+      }
+
+      return &#x60;P:${periodNumber &#x3D;&#x3D;&#x3D; 14 ? 1 : periodNumber}-W:${weekNumber}/4&#x60;;
     }
 
     return result;
@@ -577,19 +646,24 @@ export class WeekNumberPipe implements PipeTransform {
   }
 
   getTotalWeeks(firstDate: Date, secondDate: Date) {
-    return Math.ceil(Math.abs(secondDate.getTime() - firstDate.getTime()) / (7 * 24 * 60 * 60 * 1000));
+    return Math.ceil(
+      Math.abs(secondDate.getTime() - firstDate.getTime()) /
+        (7 * 24 * 60 * 60 * 1000)
+    );
   }
 
   getFirstWeekFirstDate(year, firstWeekMonth, weekStartsOn) {
-    const { date: firstWeekFirstDate, dayOfFirstDateInView: dayOfMonthFirstDateInView} &#x3D; this.getWeekFirstDate(new Date(
-      year,
-      firstWeekMonth.month,
-      1
-    ), weekStartsOn);
+    const {
+      date: firstWeekFirstDate,
+      dayOfFirstDateInView: dayOfMonthFirstDateInView,
+    } &#x3D; this.getWeekFirstDate(
+      new Date(year, firstWeekMonth.month, 1),
+      weekStartsOn
+    );
 
     return {
       firstWeekFirstDate,
-      dayOfMonthFirstDateInView
+      dayOfMonthFirstDateInView,
     };
   }
 
@@ -597,7 +671,7 @@ export class WeekNumberPipe implements PipeTransform {
     const dayOfFirstDateInView &#x3D; this.getDayInView(date, weekStartsOn);
     return {
       date,
-      dayOfFirstDateInView
+      dayOfFirstDateInView,
     };
   }
 }
