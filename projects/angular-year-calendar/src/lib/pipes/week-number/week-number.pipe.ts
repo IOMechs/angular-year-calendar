@@ -17,6 +17,8 @@ import { YCConfig } from "../../year-calendar-interfaces";
 export class WeekNumberPipe implements PipeTransform {
   transform(date: Date, ycConfig: YCConfig, year): any {
     const dateClone = new Date(date);
+    const oneDay = 86400000; // milliseconds in a day
+
     const { firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate } = ycConfig;
     let result;
     if (
@@ -85,8 +87,7 @@ export class WeekNumberPipe implements PipeTransform {
 
     // find out the distance from the first week's first day
     const roundFigure =
-      (currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) /
-      86400000;
+      (currentWeekStartDate.getTime() - firstWeekFirstDate.getTime()) / oneDay;
     result =
       roundFigure % 7 === 0
         ? roundFigure / 7 + 1
@@ -110,21 +111,27 @@ export class WeekNumberPipe implements PipeTransform {
 
     if (ycConfig.periodWeekNumber) {
       date.setHours(12, 0, 0, 0);
-      const diff = (date.getTime() - firstWeekFirstDate.getTime()) / 86400000;
+      const currentYearStartDiff =
+        (date.getTime() - firstWeekFirstDate.getTime()) / oneDay;
 
-      // calculating period week number from range [1-4] using the result calculated above
+      // calculating period week number from range [1-4] using the week number calculated above
       let week = result === 53 ? 1 : result;
-      if (diff % 7 !== 0 && diff % 7 < 4) {
+
+      // Adjusting week number if year start day and week start are diff and week have less than 4 days
+      if (currentYearStartDiff % 7 !== 0 && currentYearStartDiff % 7 < 4) {
         week += 1;
       }
 
       const periodNumber = Math.ceil(week / 4);
       const weekNumber = week % 4 || 4;
 
-      // calculation for the adjustment week if days remaining are in multiple of 7
-      const dayDiff = (nextYearFirstDate.getTime() - date.getTime()) / 86400000;
-      if (dayDiff % 7 === 0 && dayDiff <= 35) {
+      const nextYearStartDiff =
+        (nextYearFirstDate.getTime() - date.getTime()) / oneDay;
+
+      // calculation for the "Adjustment Week" if days remaining are in multiple of 7
+      if (nextYearStartDiff % 7 === 0 && nextYearStartDiff <= 35) {
         const adjustmentWeek = "P:13 - W:5/5";
+
         // if period is 14 from above means its the adjustment week
         return periodNumber === 14
           ? adjustmentWeek
