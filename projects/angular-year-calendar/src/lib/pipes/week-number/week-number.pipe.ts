@@ -17,7 +17,14 @@ export class WeekNumberPipe implements PipeTransform {
     const dateClone = new Date(date);
     const millisecondsInADay = 86400000;
 
-    const { firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate } = ycConfig;
+    const {
+      firstWeekMonth,
+      weekStartsOn,
+      forceWeek,
+      forceWeekDate,
+      periodWeekNumber,
+    } = ycConfig;
+
     let result;
     if (
       firstWeekMonth === undefined ||
@@ -108,7 +115,7 @@ export class WeekNumberPipe implements PipeTransform {
       }
     }
 
-    if (ycConfig.periodWeekNumber) {
+    if (periodWeekNumber) {
       // if forceWeek then use currentWeekStartDate instead of provided date
       const currentYearStartDiff =
         ((forceWeek ? currentWeekStartDate : dateClone).getTime() -
