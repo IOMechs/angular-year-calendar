@@ -62,8 +62,8 @@ export class WeekNumberPipe implements PipeTransform {
       firstWeekFirstDate = subDays(firstWeekFirstDate, customDateDay);
     } else {
       firstWeekFirstDate = addWeeks(firstWeekFirstDate, firstWeekMonth.week);
-      firstWeekFirstDate.setHours(12, 0, 0, 0);
     }
+    firstWeekFirstDate.setHours(12, 0, 0, 0);
     dateDay = this.getDayInView(dateClone, weekStartsOn);
     currentWeekStartDate = subDays(dateClone, dateDay);
 
@@ -109,9 +109,11 @@ export class WeekNumberPipe implements PipeTransform {
     }
 
     if (ycConfig.periodWeekNumber) {
-      date.setHours(12, 0, 0, 0);
+      // if forceWeek then use currentWeekStartDate instead of provided date
       const currentYearStartDiff =
-        (date.getTime() - firstWeekFirstDate.getTime()) / millisecondsInADay;
+        ((forceWeek ? currentWeekStartDate : dateClone).getTime() -
+          firstWeekFirstDate.getTime()) /
+        millisecondsInADay;
 
       // calculating period week number from range [1-4] using the week number calculated above
       let week = result === 53 ? 1 : result;
@@ -125,7 +127,8 @@ export class WeekNumberPipe implements PipeTransform {
       const weekNumber = week % 4 || 4;
 
       const nextYearStartDiff =
-        (nextYearFirstDate.getTime() - date.getTime()) / millisecondsInADay;
+        (nextYearFirstDate.getTime() - dateClone.getTime()) /
+        millisecondsInADay;
 
       // calculation for the "Adjustment Week" if days remaining are in multiple of 7
       if (nextYearStartDiff % 7 === 0 && nextYearStartDiff <= 35) {
