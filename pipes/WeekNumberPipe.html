@@ -106,8 +106,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="156"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:156</a></div>
                 </td>
             </tr>
 
@@ -180,8 +180,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="167"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:167</a></div>
                 </td>
             </tr>
 
@@ -263,8 +263,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:160</a></div>
                 </td>
             </tr>
 
@@ -344,8 +344,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="172"
-                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:172</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">projects/angular-year-calendar/src/lib/pipes/week-number/week-number.pipe.ts:182</a></div>
                 </td>
             </tr>
 
@@ -515,7 +515,14 @@ export class WeekNumberPipe implements PipeTransform {
     const dateClone &#x3D; new Date(date);
     const millisecondsInADay &#x3D; 86400000;
 
-    const { firstWeekMonth, weekStartsOn, forceWeek, forceWeekDate } &#x3D; ycConfig;
+    const {
+      firstWeekMonth,
+      weekStartsOn,
+      forceWeek,
+      forceWeekDate,
+      periodWeekNumber,
+    } &#x3D; ycConfig;
+
     let result;
     if (
       firstWeekMonth &#x3D;&#x3D;&#x3D; undefined ||
@@ -560,8 +567,8 @@ export class WeekNumberPipe implements PipeTransform {
       firstWeekFirstDate &#x3D; subDays(firstWeekFirstDate, customDateDay);
     } else {
       firstWeekFirstDate &#x3D; addWeeks(firstWeekFirstDate, firstWeekMonth.week);
-      firstWeekFirstDate.setHours(12, 0, 0, 0);
     }
+    firstWeekFirstDate.setHours(12, 0, 0, 0);
     dateDay &#x3D; this.getDayInView(dateClone, weekStartsOn);
     currentWeekStartDate &#x3D; subDays(dateClone, dateDay);
 
@@ -606,10 +613,12 @@ export class WeekNumberPipe implements PipeTransform {
       }
     }
 
-    if (ycConfig.periodWeekNumber) {
-      date.setHours(12, 0, 0, 0);
+    if (periodWeekNumber) {
+      // if forceWeek then use currentWeekStartDate instead of provided date
       const currentYearStartDiff &#x3D;
-        (date.getTime() - firstWeekFirstDate.getTime()) / millisecondsInADay;
+        ((forceWeek ? currentWeekStartDate : dateClone).getTime() -
+          firstWeekFirstDate.getTime()) /
+        millisecondsInADay;
 
       // calculating period week number from range [1-4] using the week number calculated above
       let week &#x3D; result &#x3D;&#x3D;&#x3D; 53 ? 1 : result;
@@ -623,7 +632,8 @@ export class WeekNumberPipe implements PipeTransform {
       const weekNumber &#x3D; week % 4 || 4;
 
       const nextYearStartDiff &#x3D;
-        (nextYearFirstDate.getTime() - date.getTime()) / millisecondsInADay;
+        (nextYearFirstDate.getTime() - dateClone.getTime()) /
+        millisecondsInADay;
 
       // calculation for the &quot;Adjustment Week&quot; if days remaining are in multiple of 7
       if (nextYearStartDiff % 7 &#x3D;&#x3D;&#x3D; 0 &amp;&amp; nextYearStartDiff &lt;&#x3D; 35) {
