@@ -180,6 +180,7 @@
       "@angular-eslint/schematics",
       "@angular-eslint/schematics",
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": false
   }
 }

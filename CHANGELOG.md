@@ -1,3 +1,13 @@
+## [1.0.3](https://github.com/IOMechs/angular-year-calendar/compare/v1.0.2...v1.0.3) (2024-04-09)
+
+
+### Bug Fixes
+
+* **period-week-number:** added testcase for the period week number calculations ([5daae5d](https://github.com/IOMechs/angular-year-calendar/commit/5daae5dc99e3a161f285a476f621c0608f9a484c))
+* **period-week-number:** not using the current week startdate when force week set to true ([63161ee](https://github.com/IOMechs/angular-year-calendar/commit/63161ee223e259c254635999faa67634e540d9aa))
+
+
+
 ## [1.0.2](https://github.com/IOMechs/angular-year-calendar/compare/v1.0.1...v1.0.2) (2024-03-26)
 
 
